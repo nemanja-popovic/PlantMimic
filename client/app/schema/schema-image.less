@@ -1,0 +1,93 @@
+﻿/* Relative positioning*/
+.schema-wrapper {
+    position: relative;
+    margin: 50px auto 20px auto;
+    border: 1px solid #fafafa;
+    box-shadow: 0 3px 3px rgba(0,0,0,.5);
+    /* Hide the original tooltips contents */
+    .pin {
+        display: none;
+    }
+    /* Begin styling the tooltips and pins */
+    .tooltip-up, .tooltip-down {
+        position: absolute;
+        background: url(http://www.red-team-design.com/wp-content/uploads/2011/10/arrow-up-down.png);
+        width: 36px;
+        height: 52px;
+    }
+
+    .tooltip-down {
+        background-position: 0 -52px;
+    }
+
+    .tooltip {
+        display: none;
+        width: 300px;
+        height: 300px;
+        cursor: help;
+        text-shadow: 0 1px 0 #fff;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        z-index: 11111111;
+        margin-left: -115px;
+        padding: 15px;
+        color: #222;
+        border-radius: 5px;
+        box-shadow: 0 3px 0 rgba(0,0,0,.7);
+        background: #fff1d3;
+        background: linear-gradient(top, #fff1d3, #ffdb90);
+        opacity: 1;
+    }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        margin-left: -10px;
+        border-bottom: 10px solid #fff1d3;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+    }
+
+    .tooltip-down .tooltip {
+        bottom: 12px;
+        top: auto;
+    }
+
+    .tooltip-down .tooltip::after {
+        bottom: -10px;
+        top: auto;
+        border-bottom: 0;
+        border-top: 10px solid #ffdb90;
+    }
+
+    .tooltip h2 {
+        font: bold 1.3em 'Trebuchet MS', Tahoma, Arial;
+        margin: 0 0 10px;
+    }
+
+    .tooltip ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .close-tooltip {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+
+    .signal {
+        height: 300px;
+        width: 300px;
+    }
+
+    .chart {
+        height: 300px;
+        width: 300px;
+        margin: 0 auto;
+    }
+}
