@@ -37,7 +37,8 @@ angular.module('plantMimicv1App')
                 //Save schema and open page
                 Schema.createSchema($scope.schema).$promise.then(function (res) {
                     //Navigate to all schemas
-                    $state.go('schema', { id: res._id });
+                    $state.go('schemas');
+                    //$state.go('schema', { id: res._id });
                 });
             });
         }
