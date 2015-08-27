@@ -35,7 +35,7 @@ angular.module('plantMimicv1App')
                 $scope.schema.imageUrl = data;
                 
                 //Save schema and open page
-                Schema.createSchema($scope.schema).$promise.then(function (res) {
+                Schema.createSchema($scope.schema).$promise.then(function () {
                     //Navigate to all schemas
                     $state.go('schemas');
                     //$state.go('schema', { id: res._id });
