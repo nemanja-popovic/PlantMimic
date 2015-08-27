@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 angular.module('plantMimicv1App')
-  .controller('SchemaCtrl', function ($scope, Auth, Schema, Upload, schema, signals, $modal) {
+  .controller('SchemaCtrl', function ($scope, Auth, Schema, Upload, schema, signals, $modal, $state) {
     
     // Use the Schema $resource to fetch all users
     $scope.schema = schema;
@@ -39,13 +39,12 @@ angular.module('plantMimicv1App')
             }).success(function (data) {
                 
                 //Save result of data
-                console.log(data);
                 $scope.schema.imageUrl = data;
                 
                 //Save schema and open page
                 Schema.createSchema($scope.schema).$promise.then(function (res) {
-                    console.log('created');
-                    console.log(res);
+                    //Navigate to all schemas
+                    $state.go('schema', { id: res._id });
                 });
             });
         }
@@ -55,7 +54,7 @@ angular.module('plantMimicv1App')
         //Show modal to add signals to this schema
         var modalInstance = $modal.open({
             animation: $scope.animationsEnabled,
-            templateUrl: './app/schema/schema-signals-modal.html',
+            templateUrl: 'app/schema/schema-signals-modal.html',
             controller: 'SchemaSignalsModalCtrl',
             resolve: {
                 signals: function () {

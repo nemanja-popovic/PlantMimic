@@ -7,7 +7,7 @@
 var signals = ['signal1', 'signal2', 'signal3', 'signal4', 'signal5'];
 
 exports.register = function (socket) {
-
+    
     (function loopNewSignal1() {
         var rand = Math.round(Math.random() * 15000) + 500;
         setTimeout(function () {
@@ -48,13 +48,13 @@ exports.register = function (socket) {
             loopNewSignal5();
         }, rand);
     }());
-
-
-    //Send new temperature to all users
+    
+    
+    //Send new signal value to all users
     function sendNewSignal(signal) {
         var obj = getSignalValues();
         obj.signal = signal;
-        socket.emit('updateSignalValue', obj);
+        socket.emit('signal_point:update', obj);
     }
 
 }
@@ -62,8 +62,8 @@ exports.register = function (socket) {
 
 function getSignalValues() {
     return {
-        period: getRandomIntInclusive(0, 11),
-        value: getRandomIntInclusive(0, 36)
+        //period: getRandomIntInclusive(0, 11),
+        value: getRandomIntInclusive(0, 30)
     };
 }
 // Returns a random integer between min (included) and max (included)

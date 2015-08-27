@@ -3,9 +3,16 @@
   position: relative;
   margin: 50px auto 20px auto;
   border: 1px solid #fafafa;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px -2px 10px rgba(0, 0, 0, 0.5);
+  background-color: #e7e7e7;
   /* Hide the original tooltips contents */
   /* Begin styling the tooltips and pins */
+}
+.schema-wrapper h4 {
+  margin: 0 0 10px;
+  text-align: center;
+  padding: 10px;
+  font-size: xx-large;
 }
 .schema-wrapper .pin {
   display: none;
@@ -13,7 +20,7 @@
 .schema-wrapper .tooltip-up,
 .schema-wrapper .tooltip-down {
   position: absolute;
-  background: url(http://www.red-team-design.com/wp-content/uploads/2011/10/arrow-up-down.png);
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAABoCAYAAACZmlKPAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAACFtJREFUeNrsW31sFEUUf7u37V17hbZHSylXC4iWL2tQlL8g1hhUBI0SQzDwh4kYcgn8Y0ICYqImKAQikmBKUBP9oyEBCUYUMaJ8RE0ERQolUgQClmtpae0HXD+u97G+Nzu7N7u9g+v1bq8hneZlprM7M7958+br9/YkVVVhNAUZRllQ0lHJpRPbqzF6HeXwjJr1x7KqIQSzxekuPT9x+tNv5RdX/oz/7xpRhWRDqUrj8W2brp3+Qo2EBlQWolHV33BQxfydqdYppWrUqAmf4iyonfLYSsBY6GAEEBT0dTVtxeHbmEQ9Ix8yrORVWXHWVlQvQzBuRBE1RJJk8M5+EZzukg343qaM2xA28rwkOb7yzqFGPRoQEAQ1JCs5UFH9CmluM2kyY4DYbJKkI5NnL4H8Qi/XSsQSa6Lk5kPFIy8DaZI0mnZAWGkhRr6y6TVQ4JmaAAyPoxGWduZ7cPiWAGkUyz+Vbg1t8TzwhK+ofA4mw5oQAJaOCBI2pfMLJ0P5zEWAqE7w9WrkgLCineMnVvlKp85HEBxIlMeJhD3XZFzJg1A2nSnIxzWdMJimPb78EhVCmYdSque7PVPAO+s5kPBPM16V5rcWJ66aR7KWxrj9+mno9P+lv9CMcgZlN8oPJkAIZDam17qLK33F3kfB5S4BR47L3DCLkwUjgJIkDk4ygQsP9sFAoAO6muuhr6eFQNGa1aPvZWsnTl/oKy6fzY0TG4sO6kudAGA4YPTiAig9jbGCS0NBsRcnSCVq7pSv03+WjG6d47Uat69w0qz3SivnxewDRPuIagZqpKMxcEkJ76BeVl8a9Hx8x41LSF/PzfnhYKCRdIiawZmjhvCdkKYZEuP/kMlA72rICYWXpXrENpiEWIdLKp9kRq9IslLtzBuvPSAQrIJhDktKu7puU2QeKtotm3xzcSjz46609gTVWH1kOZcShZpRD1Gx/YA02zVOjLGNkY01qPYDgqgOSLXMAtV4aE+QhBkpasg0He0EhNqRYm0qMdWp5nONbUFc23RA+jDZPstAWDitgFTBlmwHZNVQ3CU/+bBqzbssrtvzfgqzTDXNuFF3c71/rtL6MCXKG/7w3W8aqtv/fUwzy18Ykgddf9jMfsRrMEUQ9z8/ZAxVGjSUFkDpADJqh2wM0Big9ACSRp2GsolIMsWyiZ2wHZhO2UiGbmSiRcDh1K617Gor2wRMpGhkPMg6KDOgqNFwYzA4ONPpwEVbimhXkiHHy0yBQRCSwgQx0IN6glfX3XoJILcYgebEhL2YYxRIn/A6WTu5WpzrgY5/fydAu2kv29HdUr/ZWTARisqqAELdAJF+zoRkSENkMwTM4UYwRQjmNPR13yBeZi8Bwtbhcts/Pz7c23kNirxzwVUwmVN6mQvhwV4I3mmDzsbjBAY432js9h+j1AY6LgNJFgJRHxvElZpIx0+zuBjR7eCkdetYg7IM5ShKpw0gWlEOo9SgfGAc0GbUrDfeuHRiu0jJ2zFMJHkmezfx1J5pvuKKeeAaV4ZGnZ9Zow4GYOBOK3T5/ySjNnhq3TNY2+k/Qy7BrMitqyfJC7mLeRQx4Sssr66dVPVsArot05uqxr40ndsH/T3NKzSe2vu4BsDghyyMbEZEaAOxlUxdQNA4T02eQRNDb//Rw1UwgRJzFfL8xRg0uwHFNlrZIfLUJtLTZg1JulNGvCiKYNSo7doRD4dm4tx2O9KByBZABnEesdmOpCFnakFDkSzYEdeOZB0y69pgKyA1joayCkifbTpPrerTXvgYIBuATL4OVXRPZQEQW4scolGrFj/HMJn81dqZqu7z7anNMprZkprIhlLQkH47UYd5rtP9+Go0zpCZfGXDXa1TBJTQozjEV3ZvQKvefDtO3oYYEfrZh8Oc+lZvkNXZn3TvEj1OVsu6R3GEDry6fd/FNLN8qZa3P5YH3WeTBBTPgWfaVJO0oe4zQ7VlyoPkAQltKjGiQzVLSkadSjlze2nxKKbO5A/1KI4x+WOA0gNojKdOcCaCMZ46zlnIwlPLGk8d4pStwyJy7MwyYpACACYOE089EAwy4pPz1BcT8NRKAnCpAJGEunIsPPUE6Liu8dTUwo7ulnPQdesagKsCIAeBOfLxRadWgBXmwCx3qKTv7romZE6cU73UBrWVVwHtN+qhv8dPPPU+ndK7hP9UuT3TIC6lFw4A9Dfx7xmTveFKMWPVNeMqZ6w9q3KwFwZu39QpPcr6DWWBvpd9hLKHiHMSaygoeQi8M54BGGjhH1yC5hdREx3ULGDYsJRAu/8CdDadujdPPaNmPXHUnyTqa6DjCrRexQ64JnGV32344oDBoen+rzkRGArvoPxq2joQ1DqMFoP2KXG7tURP6wUc6/MAzhLuQIkHSryJOjSbUcZBIBCAtss/xeOpD3GeequJFr5X4N9ZH0RxlFUtgiIPairUxT9XjQjsGwhTGkErBTAQVqCpfh+aHn0fCRux41stdQ9/c8VKqCerKU09pR5Tz4fMPgMM5jvyIBh1gr/hax3MbiuYEe32WNmXjNxGTbT8/S0MhGSmAQOU6BNzuCAsF7EfnERCfcCHZl3ajx+8h7upxzfOH4BgxMnXrFxhUXVCVCkF/4VvGFuP4TTKCiwbSTsgHqinh6LhINNAWCpkw6MtpC5QXWXQ3HgEgr1sXjSgLEUw/Rk7oPGerqCekwZIE9GcCWydgbzJ0Hr5JP0uiF6lHwEsxvfbM35i5D0mX0QDaaKp/gB0tV1BjR2C220X2SrBwTTbdoTFxnr4utVMoG5dOQa9XdfpEbmXl+HzhpTOBI3Ht430YEO/ZvkFRf8ByUqUvalWlo57GWliIcoboHkIj47o1DT2K857hP8FGADFoYbDiba4PAAAAABJRU5ErkJggg==') /*../../assets/images/arrow-up-down.png*/;
   width: 36px;
   height: 52px;
 }
@@ -22,8 +29,8 @@
 }
 .schema-wrapper .tooltip {
   display: none;
-  width: 300px;
-  height: 300px;
+  width: 325px;
+  height: 320px;
   cursor: help;
   text-shadow: 0 1px 0 #fff;
   position: absolute;
@@ -34,7 +41,8 @@
   padding: 15px;
   color: #222;
   border-radius: 5px;
-  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.7);
+  border: 1px solid #fafafa;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
   background: #fff1d3;
   background: linear-gradient(top, #fff1d3, #ffdb90);
   opacity: 1;
@@ -59,9 +67,12 @@
   border-bottom: 0;
   border-top: 10px solid #ffdb90;
 }
-.schema-wrapper .tooltip h2 {
+.schema-wrapper .tooltip h4 {
   font: bold 1.3em 'Trebuchet MS', Tahoma, Arial;
   margin: 0 0 10px;
+  text-align: center;
+  padding: 10px;
+  font-size: xx-large;
 }
 .schema-wrapper .tooltip ul {
   margin: 0;

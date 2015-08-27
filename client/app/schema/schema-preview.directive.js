@@ -8,9 +8,17 @@ var addPieChartWithCarShares = function addPieChartWithCarShares(el, series) {
     }
     $newItem.each(function () {
         angular.element(this).highcharts({
+            chart: {
+                type: 'spline',
+                animation: window.Highcharts.svg, // don't animate in old IE
+                marginRight: 10
+            },
             title: {
-                text: 'Monthly Average Temperature',
-                x: -20 //center
+                text: 'Live random data'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 50
             },
             yAxis: {
                 title: {
@@ -23,13 +31,17 @@ var addPieChartWithCarShares = function addPieChartWithCarShares(el, series) {
                     }]
             },
             tooltip: {
-                valueSuffix: 'V'
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        window.Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                        window.Highcharts.numberFormat(this.y, 2);
+                }
             },
             legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
+                enabled: false
+            },
+            exporting: {
+                enabled: false
             },
             series: series
         });
@@ -51,6 +63,29 @@ var addPieChartWithCarShares = function addPieChartWithCarShares(el, series) {
     //}
 };
 
+function getPositionOfSignal(chart, name) {
+    for (var i = 0; i < chart.series.length; i++) {
+        if (chart.series[i].name === name) {
+            return i;
+        }
+    }
+    return -1;
+}
+function getRandomData() {
+    // generate an array of random data
+    var data = [],
+        time = (new Date()).getTime(),
+        i;
+    
+    for (i = -19; i <= 0; i += 1) {
+        data.push({
+            x: time + i * 1000,
+            y: Math.floor(Math.random() * (30 - 0 + 1))
+        });
+    }
+    return data;
+}
+
 angular.module('plantMimicv1App')
     .directive('schemaPreview', function () {
     return {
@@ -58,12 +93,30 @@ angular.module('plantMimicv1App')
         scope: {
             schema: '=schema'
         },
-        templateUrl: './app/schema/schema-preview.html',
+        controller: ['$scope', 'socket', function ($scope, socket) {
+                // Update array with any new or deleted items pushed from the socket
+                socket.syncUpdates('point', $scope.schema.points, function (event, point, points) {
+                    // This callback is fired after the comments array is updated by the socket listeners
+                    console.log(points);
+                    
+                    //Update highcharts
+                    for (var i = 0; i < window.Highcharts.charts.length; i++) {
+                        var positionOfSignal = getPositionOfSignal(window.Highcharts.charts[i], point.signal);
+                        if (positionOfSignal > -1) {
+                            
+                            var x = (new Date()).getTime(), // current time
+                                y = point.value;
+                            window.Highcharts.charts[i].series[positionOfSignal].addPoint([x, y], true, true);
+                        }
+                    }
+
+                });
+            }],
+        templateUrl: 'app/schema/schema-preview.html',
         replace: true,
         link: function (scope, element) {
             
             var wrapper = element;
-            console.log(element);
             
             for (var i = 0; i < scope.schema.points.length; i++) {
                 
@@ -83,11 +136,10 @@ angular.module('plantMimicv1App')
                     //Fire up highcharts
                     var series = [];
                     for (var j = 0; j < points.signals.length; j++) {
-                        series.push({ name: points.signals[j] });
+                        series.push({ name: points.signals[j], data: getRandomData() });
                     }
                     
                     var el = element.find('#' + id);
-                    console.log(el);
                     addPieChartWithCarShares(el, series);
                 }
             }

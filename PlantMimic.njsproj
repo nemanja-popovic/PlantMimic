@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>PlantMimic</Name>
+    <RootNamespace>PlantMimic</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>49cc7636-78b8-44cb-aaa8-7fe219c82c85</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>server\app.js</StartupFile>
+    <StartWebBrowser>False</StartWebBrowser>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <StartWebBrowser>false</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="app.js" />
+    <Compile Include="client\app\account\account.js" />
+    <Compile Include="client\app\account\login\login.controller.js" />
+    <Compile Include="client\app\account\settings\settings.controller.js" />
+    <Compile Include="client\app\account\signup\signup.controller.js" />
+    <Compile Include="client\app\admin\admin.controller.js" />
+    <Compile Include="client\app\admin\admin.js" />
+    <Compile Include="client\app\app.js" />
+    <Compile Include="client\app\main\main-details.controller.js" />
+    <Compile Include="client\app\main\main.controller.js" />
+    <Compile Include="client\app\main\main.controller.spec.js" />
+    <Compile Include="client\app\main\main.js" />
+    <Compile Include="client\app\schema\schema-image.directive.js" />
+    <Compile Include="client\app\schema\schema-preview.directive.js" />
+    <Compile Include="client\app\schema\schema-signals-modal.controller.js" />
+    <Compile Include="client\app\schema\schema.controller.js" />
+    <Compile Include="client\app\schema\schema.js" />
+    <Compile Include="client\app\schema\schema.REST.js" />
+    <Compile Include="client\app\schema\schema.service.js" />
+    <Compile Include="client\app\schema\schemas.controller.js" />
+    <Compile Include="client\components\auth\auth.service.js" />
+    <Compile Include="client\components\auth\user.service.js" />
+    <Compile Include="client\components\highcharts\highcharts-config.js" />
+    <Compile Include="client\components\modal\modal.service.js" />
+    <Compile Include="client\components\mongoose-error\mongoose-error.directive.js" />
+    <Compile Include="client\components\navbar\navbar.controller.js" />
+    <Compile Include="client\components\socket\socket.mock.js" />
+    <Compile Include="client\components\socket\socket.service.js" />
+    <Compile Include="e2e\main\main.po.js" />
+    <Compile Include="e2e\main\main.spec.js" />
+    <Compile Include="Gruntfile.js" />
+    <Compile Include="karma.conf.js" />
+    <Compile Include="protractor.conf.js" />
+    <Compile Include="server\api\schema\index.js" />
+    <Compile Include="server\api\schema\schema.controller.js" />
+    <Compile Include="server\api\schema\schema.model.js" />
+    <Compile Include="server\api\schema\schema.socket.js" />
+    <Compile Include="server\api\signal\index.js" />
+    <Compile Include="server\api\signal\signal.controller.js" />
+    <Compile Include="server\api\signal\signal.socket.js" />
+    <Compile Include="server\api\user\index.js" />
+    <Compile Include="server\api\user\user.controller.js" />
+    <Compile Include="server\api\user\user.model.js" />
+    <Compile Include="server\api\user\user.model.spec.js" />
+    <Compile Include="server\app.js" />
+    <Compile Include="server\auth\auth.service.js" />
+    <Compile Include="server\auth\facebook\index.js" />
+    <Compile Include="server\auth\facebook\passport.js" />
+    <Compile Include="server\auth\google\index.js" />
+    <Compile Include="server\auth\google\passport.js" />
+    <Compile Include="server\auth\index.js" />
+    <Compile Include="server\auth\local\index.js" />
+    <Compile Include="server\auth\local\passport.js" />
+    <Compile Include="server\components\errors\index.js" />
+    <Compile Include="server\config\environment\development.js" />
+    <Compile Include="server\config\environment\index.js" />
+    <Compile Include="server\config\environment\production.js" />
+    <Compile Include="server\config\environment\test.js" />
+    <Compile Include="server\config\express.js" />
+    <Compile Include="server\config\local.env.js" />
+    <Compile Include="server\config\local.env.sample.js" />
+    <Compile Include="server\config\seed.js" />
+    <Compile Include="server\config\socketio.js" />
+    <Compile Include="server\routes.js" />
+    <Content Include=".bowerrc" />
+    <Content Include=".buildignore" />
+    <Content Include=".editorconfig" />
+    <Content Include=".gitattributes" />
+    <Content Include=".gitignore" />
+    <Content Include="bower.json" />
+    <Content Include="client\.htaccess" />
+    <Content Include="client\.jshintrc" />
+    <Content Include="client\app\account\login\login.html" />
+    <Content Include="client\app\account\login\login.less" />
+    <Content Include="client\app\account\settings\settings.html" />
+    <Content Include="client\app\account\signup\signup.html" />
+    <Content Include="client\app\admin\admin.html" />
+    <Content Include="client\app\admin\admin.less" />
+    <Content Include="client\app\app.less" />
+    <Content Include="client\app\main\main-details.html" />
+    <Content Include="client\app\main\main.css" />
+    <Content Include="client\app\main\main.css.map" />
+    <Content Include="client\app\main\main.html" />
+    <Content Include="client\app\main\main.less" />
+    <Content Include="client\app\main\main.min.css" />
+    <Content Include="client\app\schema\schema-image.css" />
+    <Content Include="client\app\schema\schema-image.css.map" />
+    <Content Include="client\app\schema\schema-image.less" />
+    <Content Include="client\app\schema\schema-preview.html" />
+    <Content Include="client\app\schema\schema-signals-modal.html" />
+    <Content Include="client\app\schema\schema.html" />
+    <Content Include="client\app\schema\schemas.html" />
+    <Content Include="client\app\sidebar.less" />
+    <Content Include="client\assets\images\yeoman.png" />
+    <Content Include="client\components\modal\modal.html" />
+    <Content Include="client\components\modal\modal.less" />
+    <Content Include="client\components\navbar\navbar.html" />
+    <Content Include="client\favicon.ico" />
+    <Content Include="client\index.html" />
+    <Content Include="client\robots.txt" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="server\.jshintrc" />
+    <Content Include="server\.jshintrc-spec" />
+    <Content Include="server\views\404.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="client\" />
+    <Folder Include="client\app\" />
+    <Folder Include="client\app\account\" />
+    <Folder Include="client\app\account\login\" />
+    <Folder Include="client\app\account\settings\" />
+    <Folder Include="client\app\account\signup\" />
+    <Folder Include="client\app\admin\" />
+    <Folder Include="client\app\main\" />
+    <Folder Include="client\app\schema\" />
+    <Folder Include="client\assets\" />
+    <Folder Include="client\assets\images\" />
+    <Folder Include="client\components\" />
+    <Folder Include="client\components\auth\" />
+    <Folder Include="client\components\highcharts\" />
+    <Folder Include="client\components\modal\" />
+    <Folder Include="client\components\mongoose-error\" />
+    <Folder Include="client\components\navbar\" />
+    <Folder Include="client\components\socket\" />
+    <Folder Include="e2e\" />
+    <Folder Include="e2e\main\" />
+    <Folder Include="server\" />
+    <Folder Include="server\api\" />
+    <Folder Include="server\api\schema\" />
+    <Folder Include="server\api\signal\" />
+    <Folder Include="server\api\user\" />
+    <Folder Include="server\auth\" />
+    <Folder Include="server\auth\facebook\" />
+    <Folder Include="server\auth\google\" />
+    <Folder Include="server\auth\local\" />
+    <Folder Include="server\components\" />
+    <Folder Include="server\components\errors\" />
+    <Folder Include="server\config\" />
+    <Folder Include="server\config\environment\" />
+    <Folder Include="server\views\" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+</Project>

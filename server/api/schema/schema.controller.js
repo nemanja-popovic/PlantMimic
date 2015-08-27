@@ -95,35 +95,46 @@ exports.getImage = function (req, res) {
 
 // Post image
 exports.postImage = function (req, res) {
-    
-    var url = req.get('Host');
-    var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-    
-    var form = new multiparty.Form({ uploadDir: __dirname + '../../../temp' });
-
-    form.parse(req, function (err, fields, files) {
-        var file = files.file[0];
-        var contentType = file.headers['content-type'];
-        var tmpPath = file.path;
-        var extIndex = tmpPath.lastIndexOf('.');
-        var extension = (extIndex < 0) ? '' : tmpPath.substr(extIndex);
-        // uuid is for generating unique filenames. 
-        var fileName = uuid.v4() + extension;
-        var destPath = folder + fileName;
-        
-        // Server side file type checker.
-        if (contentType !== 'image/png' && contentType !== 'image/jpeg') {
-            fs.unlink(tmpPath);
-            return res.status(400).send('Unsupported file type.');
-        }
-        
-        fs.rename(tmpPath, destPath, function (err) {
+    try {
+        ensureExists(__dirname + '/temp', function (err) {
             if (err) {
-                return res.status(400).send('Image is not saved:');
+                res.json(err);
+            }// handle folder creation error
+            else {
+                var url = req.get('Host');
+                var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+                
+                var form = new multiparty.Form({ uploadDir: __dirname + '/temp' });
+                
+                form.parse(req, function (err, fields, files) {
+                    var file = files.file[0];
+                    var contentType = file.headers['content-type'];
+                    var tmpPath = file.path;
+                    var extIndex = tmpPath.lastIndexOf('.');
+                    var extension = (extIndex < 0) ? '' : tmpPath.substr(extIndex);
+                    // uuid is for generating unique filenames. 
+                    var fileName = uuid.v4() + extension;
+                    var destPath = folder + fileName;
+                    
+                    // Server side file type checker.
+                    if (contentType !== 'image/png' && contentType !== 'image/jpeg') {
+                        fs.unlink(tmpPath);
+                        return res.status(400).send('Unsupported file type.');
+                    }
+                    
+                    fs.rename(tmpPath, destPath, function (err) {
+                        if (err) {
+                            return res.status(400).send('Image is not saved:' + err);
+                        }
+                        return res.json(fullUrl + '/' + fileName);
+                    });
+                });
             }
-            return res.json(fullUrl + '/' + fileName);
         });
-    });
+    }
+    catch (e) {
+        res.json(e);
+    }
 };
 
 
@@ -133,6 +144,15 @@ exports.getSignals = function (req, res) {
     return res.json(200, signals);
 };
 
+function ensureExists(path, cb) {
+    //var mask = 0744;
+    fs.mkdir(path, function (err) {
+        if (err) {
+            if (err.code === 'EEXIST') cb(null); // ignore the error if the folder already exists
+            else cb(err); // something else went wrong
+        } else cb(null); // successfully created folder
+    });
+}
 
 function handleError(res, err) {
     return res.send(500, err);

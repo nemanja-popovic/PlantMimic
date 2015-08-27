@@ -34,7 +34,7 @@
                                 <h1 class="page-header">Schemas:</h1>
                                 <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6">
                                     <li ng-repeat="schema in schemas">
-                                        <a ui-sref="main.details({id: schema._id})">{{schema.name}}</a>
+                                        <a ng-if="!!schema._id" ui-sref="main.details({id: schema._id})">{{schema.name}}</a>
                                     </li>
                                 </ul>
                             </div>
