@@ -3,7 +3,6 @@
 angular.module('plantMimicv1App')
   .controller('SchemaCtrl', function ($scope, Auth, Schema, Upload, schema, signals, $modal, $state) {
     
-    // Use the Schema $resource to fetch all users
     $scope.schema = schema;
     $scope.signals = signals.data || [];
     
@@ -12,7 +11,7 @@ angular.module('plantMimicv1App')
     //$scope.file;
     
     $scope.addSchema = function () {
-        if ($scope.schema.name && $scope.file !== null) {
+        if (!!$scope.schema.name && !!$scope.file) {
             $scope.upload($scope.file);
             $scope.error = null;
         }
@@ -21,12 +20,6 @@ angular.module('plantMimicv1App')
         }
     };
     
-    ////File upload
-    //$scope.$watch('file', function () {
-    //    if ($scope.file != null) {
-    //        $scope.upload([$scope.file]);
-    //    }
-    //});
     $scope.upload = function (file) {
         if (!file.$error) {
             Upload.upload({
@@ -51,6 +44,13 @@ angular.module('plantMimicv1App')
     };
     $scope.addPointToSchema = function (event) {
         
+        var $img = angular.element('#schemaImage');
+        var width = $img.width();
+        var height = $img.height();
+        // event.offsetX : x = width : 100
+        var x = (event.offsetX * 100) / width;
+        var y = (event.offsetY * 100) / height; 
+
         //Show modal to add signals to this schema
         var modalInstance = $modal.open({
             animation: $scope.animationsEnabled,
@@ -63,14 +63,14 @@ angular.module('plantMimicv1App')
             }
         });
         
-        modalInstance.result.then(function (selectedItems) {
+        modalInstance.result.then(function (res) {
             $scope.schema.points.push({
-                'signals': selectedItems,
-                'x': event.offsetX,
-                'y': event.offsetY,
+                'name': res.name,
+                'signals': res.signals,
+                'x': x,
+                'y': y,
             });
         }, function () {
-            console.log('Modal dismissed at: ' + new Date());
         });
 
     };

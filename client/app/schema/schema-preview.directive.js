@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var addPieChartWithCarShares = function addPieChartWithCarShares(el, series) {
+var addChartWithSignalsData = function addChartWithSignalsData(el, name, series) {
     
     var $newItem = angular.element(el);
     if (!$newItem) {
@@ -14,7 +14,7 @@ var addPieChartWithCarShares = function addPieChartWithCarShares(el, series) {
                 marginRight: 10
             },
             title: {
-                text: 'Live random data'
+                text: name
             },
             xAxis: {
                 type: 'datetime',
@@ -122,13 +122,13 @@ angular.module('plantMimicv1App')
                 
                 var x = scope.schema.points[i].x;
                 var y = scope.schema.points[i].y;
-                var id = 'tooltop-' + x + '_' + y;
+                var id = 'tooltop-' + i;
                 var content = '<div class="signal">' +
                                     '<div id="' + id + '" class="lineChart chart"></div>' +
                                 '</div>';
                 
                 // append tooltip
-                wrapper.append('<div style="left:' + x + 'px;top:' + y + 'px" class="tooltip-down">' +
+                wrapper.append('<div style="left:' + x + '%;top:' + y + '%" class="tooltip-down">' +
                                             '<div class="tooltip"><div class="close-tooltip">X</div>' + content + '</div>' +
                                     '</div>');
                 if (scope.schema.points[i].signals.length > 0) {
@@ -140,7 +140,7 @@ angular.module('plantMimicv1App')
                     }
                     
                     var el = element.find('#' + id);
-                    addPieChartWithCarShares(el, series);
+                    addChartWithSignalsData(el, scope.schema.points[i].name, series);
                 }
             }
             
@@ -151,13 +151,6 @@ angular.module('plantMimicv1App')
                     window.Highcharts.charts[i].reflow();
                 }
             }
-            
-            //wrapper.on('mouseenter', '.tooltip-up, .tooltip-down', function () {
-            //    angular.element(this).children('.tooltip').fadeIn(100);
-            //});
-            //wrapper.on('mouseleave', '.tooltip-up, .tooltip-down', function () {
-            //    angular.element(this).children('.tooltip').fadeOut(100);
-            //});
             
             wrapper.on('click', '.tooltip-up, .tooltip-down', function () {
                 angular.element(this).children('.tooltip').fadeIn(100);

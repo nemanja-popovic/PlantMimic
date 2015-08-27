@@ -4,6 +4,8 @@ angular.module('plantMimicv1App')
   .controller('SchemaSignalsModalCtrl', function ($scope, signals, $modalInstance) {
     
     $scope.signals = [];
+    $scope.signalsError = false;
+
     for (var i = 0; i < signals.length; i++) {
         $scope.signals.push({ value: signals[i] });
     }
@@ -15,6 +17,7 @@ angular.module('plantMimicv1App')
         item.selected = !item.selected;
         if (item.selected) {
             $scope.selectedItems.push(item.value);
+            $scope.signalsError = false;
         }
         else {
             $scope.selectedItems.splice($scope.selectedItems.indexOf(item.value), 1);
@@ -22,7 +25,12 @@ angular.module('plantMimicv1App')
     };
     
     $scope.ok = function () {
-        $modalInstance.close($scope.selectedItems);
+        if ($scope.selectedItems.length > 0 && !!$scope.name && $scope.name !== '') {
+            $modalInstance.close({ name: $scope.name, signals: $scope.selectedItems });
+        }
+        else {
+            $scope.signalsError = true;
+        }
     };
     
     $scope.cancel = function () {

@@ -31,7 +31,7 @@ angular.module('plantMimicv1App')
                         content += '</ul>';
 
                         // append the tooltip
-                        wrapper.append('<div style="left:' + x + 'px;top:' + y + 'px" class="tooltip-down">' +
+                        wrapper.append('<div style="left:' + x + '%;top:' + y + '%" class="tooltip-down">' +
                                                 '<div class="tooltip"><div class="close-tooltip">X</div>' + content + '</div>' +
                                         '</div>');
                     }
@@ -56,17 +56,11 @@ angular.module('plantMimicv1App')
                     content += '</ul>';
 
                     // append tooltip
-                    wrapper.append('<div style="left:' + x + 'px;top:' + y + 'px" class="tooltip-down">' +
+                    wrapper.append('<div style="left:' + x + '%;top:' + y + '%" class="tooltip-down">' +
                                                 '<div class="tooltip"><div class="close-tooltip">X</div>' + content + '</div>' +
                                         '</div>');
                 }
 
-                //wrapper.on('mouseenter', '.tooltip-up, .tooltip-down', function () {
-                //    angular.element(this).children('.tooltip').fadeIn(100);
-                //});
-                //wrapper.on('mouseleave', '.tooltip-up, .tooltip-down', function () {
-                //    angular.element(this).children('.tooltip').fadeOut(100);
-                //});
                 wrapper.on('click', '.tooltip-up, .tooltip-down', function () {
                     angular.element(this).children('.tooltip').fadeIn(100);
                 });

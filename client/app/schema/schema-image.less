@@ -1,7 +1,10 @@
 ﻿/* Relative positioning*/
+@height: 300px;
+@width: 300px;
+
 .schema-wrapper {
     position: relative;
-    margin: 50px auto 20px auto;
+    margin: 0 auto 20px auto;
     border: 1px solid #fafafa;
     box-shadow: 3px -2px 10px rgba(0,0,0,.5);
     background-color: #e7e7e7;
@@ -38,8 +41,8 @@
         top: 10px;
         left: 50%;
         z-index: 11111111;
-        margin-left: -115px;
-        padding: 15px;
+        margin-left: -162px;
+        padding: 10px;
         color: #222;
         border-radius: 5px;
         border: 1px solid #fafafa;
@@ -93,13 +96,17 @@
     }
 
     .signal {
-        height: 300px;
-        width: 300px;
+        height: @height;
+        width: @width;
     }
 
     .chart {
-        height: 300px;
-        width: 300px;
+        height: @height;
+        width: @width;
         margin: 0 auto;
     }
+}
+
+.schema-image {
+    width: 100%;
 }
