@@ -7,3 +7,5 @@ dist
 /server/config/local.env.js
 .ntvs_analysis.dat
 server/uploads/
+PlantMimic/obj
+obj/Debug
