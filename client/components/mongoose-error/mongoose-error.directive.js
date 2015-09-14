@@ -3,7 +3,7 @@
 /**
  * Removes server error when user updates input
  */
-angular.module('plantMimicv1App')
+angular.module('plantMimicApp')
   .directive('mongooseError', function () {
     return {
       restrict: 'A',

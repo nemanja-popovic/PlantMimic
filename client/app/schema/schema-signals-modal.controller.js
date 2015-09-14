@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('plantMimicv1App')
+angular.module('plantMimicApp')
   .controller('SchemaSignalsModalCtrl', function ($scope, signals, $modalInstance) {
     
     $scope.signals = [];

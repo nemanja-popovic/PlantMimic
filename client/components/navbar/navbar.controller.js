@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('plantMimicv1App')
+angular.module('plantMimicApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
       $scope.menu = [{
           'title': 'Home',

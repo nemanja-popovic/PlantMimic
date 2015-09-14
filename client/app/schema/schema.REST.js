@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('plantMimicv1App')
+angular.module('plantMimicApp')
   .factory('SchemaREST', function ($resource) {
     return $resource('/api/schema/:id', null,
     {

@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('plantMimicv1App')
+angular.module('plantMimicApp')
     .directive('schemaImage', function () {
         return {
             restrict: 'E',

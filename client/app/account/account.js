@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('plantMimicv1App')
+angular.module('plantMimicApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('login', {

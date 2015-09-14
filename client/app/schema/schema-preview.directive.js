@@ -86,7 +86,7 @@ function getRandomData() {
     return data;
 }
 
-angular.module('plantMimicv1App')
+angular.module('plantMimicApp')
     .directive('schemaPreview', function () {
     return {
         restrict: 'AE', 

@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('plantMimicv1App')
+angular.module('plantMimicApp')
   .controller('SchemasCtrl', function ($scope, Auth, Schema, schemas) {
     
     $scope.schemas = schemas;

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('plantMimicv1App')
+angular.module('plantMimicApp')
   .factory('User', function ($resource) {
     return $resource('/api/users/:id/:controller', {
       id: '@_id'

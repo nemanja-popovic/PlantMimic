@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('plantMimicv1App')
+angular.module('plantMimicApp')
   .factory('Modal', function ($rootScope, $modal) {
     /**
      * Opens a modal
