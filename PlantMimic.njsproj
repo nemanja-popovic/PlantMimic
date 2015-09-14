@@ -123,7 +123,8 @@
     <Content Include="client\app\schema\schema.html" />
     <Content Include="client\app\schema\schemas.html" />
     <Content Include="client\app\sidebar.less" />
-    <Content Include="client\assets\images\yeoman.png" />
+    <Content Include="client\assets\images\arrow-up-down.png" />
+    <Content Include="client\assets\images\factory_illustration.jpg" />
     <Content Include="client\components\modal\modal.html" />
     <Content Include="client\components\modal\modal.less" />
     <Content Include="client\components\navbar\navbar.html" />

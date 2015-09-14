@@ -36,15 +36,7 @@ exports.show = function (req, res) {
 
 // Creates a new schema in the DB.
 exports.create = function (req, res) {
-    
-    console.log(req.body);
-    console.log(req.file);
-    
     Schema.create(req.body, function (err, schema) {
-        
-        console.log(req.body);
-        console.log(req.file);
-        
         if (err) { return handleError(res, err); }
         return res.json(201, schema);
     });
