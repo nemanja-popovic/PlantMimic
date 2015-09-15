@@ -1,11 +1,16 @@
 'use strict';
 
 angular.module('plantMimicApp')
- .controller('MasterCtrl', ['$scope', '$cookieStore', function MasterCtrl($scope, $cookieStore) {
+ .controller('MasterCtrl', ['$scope', '$cookieStore', 'Auth', function MasterCtrl($scope, $cookieStore, Auth) {
+        
+        
+        $scope.isAdmin = Auth.isAdmin;
+        
+        
         /**
-     * Sidebar Toggle & Cookie Control
-     */
-    var mobileView = 992;
+         * Sidebar Toggle & Cookie Control
+         */
+        var mobileView = 992;
         
         $scope.getWidth = function () {
             return window.innerWidth;

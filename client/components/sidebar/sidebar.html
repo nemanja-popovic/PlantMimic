@@ -23,7 +23,7 @@
             </a>
         </li>
 
-        <li class="sidebar-list">
+        <li class="sidebar-list" ng-if="isAdmin()">
             <a href="/admin" ng-class="{active: isActive('/admin')}">
                 Admin
                 <span class="menu-icon fa fa-table"></span>
