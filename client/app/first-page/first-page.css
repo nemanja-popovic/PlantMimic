@@ -1,0 +1,25 @@
+﻿.start-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+}
+.start-screen img {
+  height: 100%;
+  margin: auto;
+}
+.start-screen .start-screen-title {
+  font-size: 64px;
+  font-weight: 800;
+}
+.start-screen .start-screen-content {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  margin-left: -175px;
+  width: 350px;
+  text-align: center;
+}
+/*# sourceMappingURL=first-page.css.map */

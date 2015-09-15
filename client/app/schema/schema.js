@@ -11,7 +11,8 @@ angular.module('plantMimicApp')
             schemas: ['Schema', function (Schema) {
                     return Schema.getSchemas().$promise;
                 }]
-        }
+        },
+        authenticate: true
     })
      .state('schema', {
         url: '/schema/:id',
@@ -32,6 +33,7 @@ angular.module('plantMimicApp')
                     //For now empty array is returned
                     return $http.get('/api/signal');
                 }]
-        }
+        },
+        authenticate: true
     });
 });

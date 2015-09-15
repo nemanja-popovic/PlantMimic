@@ -1,23 +1,28 @@
-﻿<div ng-include="'components/navbar/navbar.html'"></div>
-<div class="container">
+﻿<div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
 
+    <div ng-include="'components/navbar/navbar.html'"></div>
 
-    <div class="form-group">
-        <a class="btn btn-success pull-right" href="/schema/new">New Schema</a>
-    </div>
+    <div ng-include="'components/sidebar/sidebar.html'"></div>
 
-    <div class="form-group">
-        <label>Filter by name:</label>
-        <input class="form-control" type="text" ng-model="sort" />
-    </div>
+    <div class="col-xs-12">
 
-    <div class="admin-schema" ng-repeat="schema in schemas | filter:{ name: sort }">
-        <div schema-preview schema="schema">
+        <div class="form-group">
+            <a class="btn btn-success pull-right" href="/schema/new">New Schema</a>
         </div>
-        <div class="btn-group">
-            <div class="btn btn-primary" ng-click="edit(schema)">Edit Schema</div>
-            <div class="btn btn-danger" ng-click="delete(schema)">Delete Schema</div>
-        </div>
-    </div>
 
+        <div class="form-group">
+            <label>Filter by name:</label>
+            <input class="form-control" type="text" ng-model="sort" />
+        </div>
+
+        <div class="admin-schema" ng-repeat="schema in schemas | filter:{ name: sort }">
+            <div schema-preview schema="schema">
+            </div>
+            <div class="btn-group">
+                <div class="btn btn-primary" ng-click="edit(schema)">Edit Schema</div>
+                <div class="btn btn-danger" ng-click="delete(schema)">Delete Schema</div>
+            </div>
+        </div>
+
+    </div>
 </div>

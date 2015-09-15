@@ -12,7 +12,6 @@ angular.module('plantMimicApp')
             transclude: true,
             link: function (scope, element) {
 
-                console.log(element);
                 var wrapper = element.find('.schema-wrapper');
 
                 scope.$watch('points', function (newVal, oldVal) {

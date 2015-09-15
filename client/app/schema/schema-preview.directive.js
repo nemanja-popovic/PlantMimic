@@ -7,7 +7,10 @@ var addChartWithSignalsData = function addChartWithSignalsData(el, name, series)
         return;
     }
     $newItem.each(function () {
-        angular.element(this).highcharts({
+        
+        var $element = angular.element(this);
+        
+        $element.highcharts({
             chart: {
                 type: 'spline',
                 animation: window.Highcharts.svg, // don't animate in old IE
@@ -45,6 +48,8 @@ var addChartWithSignalsData = function addChartWithSignalsData(el, name, series)
             },
             series: series
         });
+        
+        $element.highcharts().reflow();
     });
     
     ////Show loading animation
@@ -97,7 +102,6 @@ angular.module('plantMimicApp')
                 // Update array with any new or deleted items pushed from the socket
                 socket.syncUpdates('point', $scope.schema.points, function (event, point, points) {
                     // This callback is fired after the comments array is updated by the socket listeners
-                    console.log(points);
                     
                     //Update highcharts
                     for (var i = 0; i < window.Highcharts.charts.length; i++) {
@@ -110,6 +114,14 @@ angular.module('plantMimicApp')
                         }
                     }
 
+                });
+                
+                $scope.$on('$destroy', function () {
+                    socket.unsyncUpdates('point');
+                    
+                    //Remove highcharts
+                    angular.element('.lineChart').remove();
+                    window.Highcharts.charts = [];
                 });
             }],
         templateUrl: 'app/schema/schema-preview.html',
@@ -145,12 +157,12 @@ angular.module('plantMimicApp')
             }
             
             
-            //Resize all charts
-            for (i = 0; i < window.Highcharts.charts.length; i++) {
-                if (!!window.Highcharts.charts[i]) {
-                    window.Highcharts.charts[i].reflow();
-                }
-            }
+            ////Resize all charts
+            //for (i = 0; i < window.Highcharts.charts.length; i++) {
+            //    if (!!window.Highcharts.charts[i]) {
+            //        window.Highcharts.charts[i].reflow();
+            //    }
+            //}
             
             wrapper.on('click', '.tooltip-up, .tooltip-down', function () {
                 angular.element(this).children('.tooltip').fadeIn(100);

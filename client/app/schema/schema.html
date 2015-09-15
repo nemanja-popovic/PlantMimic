@@ -1,40 +1,46 @@
-﻿<div ng-include="'components/navbar/navbar.html'"></div>
-<div class="container">
+﻿<div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
 
-    <div class="alert alert-danger" ng-if="!!error">
-        {{error}}
-    </div>
 
-    <div ng-show="!schema.imageUrl" class="row">
-        <div class="alert alert-primary">
+    <div ng-include="'components/navbar/navbar.html'"></div>
 
-            <div class="form-group">
-                <label>Schema name</label>
-                <input type="text" ng-model="schema.name" class="form-control" />
-            </div>
+    <div ng-include="'components/sidebar/sidebar.html'"></div>
 
-            <div class="button btn btn-primary" ngf-select ng-model="file" accept="image/*"
-                 ngf-multiple="false">Choose Schema Image</div>
+    <div class="col-xs-12">
 
-            <schema-image file="file" points="schema.points">
-
-                <img ngf-src="file" ng-click="addPointToSchema($event)" id="schemaImage" class="schema-image"
-                     ngf-background="file"
-                     ngf-no-object-url="true or false">
-
-                <div id="pins"></div>
-
-            </schema-image>
-
+        <div class="alert alert-danger" ng-if="!!error">
+            {{error}}
         </div>
-        <div class="button btn btn-primary" ng-click="addSchema()">Add Schema</div>
+
+        <div ng-show="!schema.imageUrl" class="row">
+            <div class="alert alert-primary">
+
+                <div class="form-group">
+                    <label>Schema name</label>
+                    <input type="text" ng-model="schema.name" class="form-control" />
+                </div>
+
+                <div class="button btn btn-primary" ngf-select ng-model="file" accept="image/*"
+                     ngf-multiple="false">Choose Schema Image</div>
+
+                <schema-image file="file" points="schema.points">
+
+                    <img ngf-src="file" ng-click="addPointToSchema($event)" id="schemaImage" class="schema-image"
+                         ngf-background="file"
+                         ngf-no-object-url="true or false">
+
+                    <div id="pins"></div>
+
+                </schema-image>
+
+            </div>
+            <div class="button btn btn-primary" ng-click="addSchema()">Add Schema</div>
+        </div>
+
+
+        <div ng-if="!!schema.imageUrl">
+            <h4>Edit {{schema.name}}</h4>
+            <img ng-src="{{schema.imageUrl}}" />
+        </div>
+
     </div>
-
-
-    <div ng-if="!!schema.imageUrl">
-        <h4>Edit {{schema.name}}</h4>
-        <img ng-src="{{schema.imageUrl}}" />
-    </div>
-
-
 </div>

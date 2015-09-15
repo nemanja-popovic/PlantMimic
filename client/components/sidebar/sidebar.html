@@ -1,0 +1,58 @@
+
+<div id="sidebar-wrapper" ng-controller="SidebarCtrl">
+    <ul class="sidebar">
+        <li class="sidebar-main">
+            <a ng-click="toggleSidebar()">
+                Plant Mimic
+                <span class="menu-icon glyphicon glyphicon-transfer"></span>
+            </a>
+        </li>
+        <li class="sidebar-title"><span>NAVIGATION</span></li>
+
+        <li class="sidebar-list">
+            <a href="/main" ng-class="{active: isActive('/main')}">
+                Main
+                <span class="menu-icon fa fa-tachometer"></span>
+            </a>
+        </li>
+
+        <li class="sidebar-list">
+            <a href="/schema" ng-class="{active: isActive('/schema')}">
+                Schemas
+                <span class="menu-icon fa fa-area-chart"></span>
+            </a>
+        </li>
+
+        <li class="sidebar-list">
+            <a href="/admin" ng-class="{active: isActive('/admin')}">
+                Admin
+                <span class="menu-icon fa fa-table"></span>
+            </a>
+        </li>
+
+        <li class="sidebar-title"><span>SCHEMAS</span></li>
+        <li class="sidebar-title">
+            <span>
+                <input type="text" placeholder="Filter" class="form-control" ng-model="sidebarFilter" />
+            </span>
+        </li>
+        <li class="sidebar-list" ng-repeat="schema in sidebarSchemas | filter:{ name: sidebarFilter }">
+            <a ng-if="!!schema._id"
+               ui-sref="main.details({id: schema._id})"
+               ng-class="{active: isActive('/main/details/' + schema._id)}">{{schema.name}}</a>
+        </li>
+
+    </ul>
+    <div class="sidebar-footer">
+        <div class="col-xs-6">
+            <a href="https://github.com/nemanja23031991/PlantMimic" target="_blank">
+                Github
+            </a>
+        </div>
+        <div class="col-xs-6">
+            <a href="https://github.com/nemanja23031991/" target="_blank">
+                About
+            </a>
+        </div>
+    </div>
+</div>

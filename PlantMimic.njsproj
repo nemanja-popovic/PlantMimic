@@ -125,6 +125,7 @@
     <Content Include="client\app\sidebar.less" />
     <Content Include="client\assets\images\arrow-up-down.png" />
     <Content Include="client\assets\images\factory_illustration.jpg" />
+    <Content Include="client\components\bootstrap\bootstrap-superhero.min.css" />
     <Content Include="client\components\modal\modal.html" />
     <Content Include="client\components\modal\modal.less" />
     <Content Include="client\components\navbar\navbar.html" />
@@ -155,6 +156,7 @@
     <Folder Include="client\components\modal\" />
     <Folder Include="client\components\mongoose-error\" />
     <Folder Include="client\components\navbar\" />
+    <Folder Include="client\components\bootstrap\" />
     <Folder Include="client\components\socket\" />
     <Folder Include="e2e\" />
     <Folder Include="e2e\main\" />

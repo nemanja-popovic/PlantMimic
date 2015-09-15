@@ -8,6 +8,15 @@
  * App-wide Styles
  */
 
+html {
+    overflow-y: auto;
+}
+
+body {
+    background: #f3f3f3;
+    color: #333 !important;
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -15,11 +24,16 @@
     padding: 0.2em 0;
 }
 
+#sidebar-wrapper {
+    top: 0;
+}
+
 // injector
 @import 'account/login/login.less';
 @import 'admin/admin.less';
+@import 'first-page/first-page.less';
 @import 'main/main.less';
 @import 'schema/schema-image.less';
-@import 'sidebar.less';
 @import 'modal/modal.less';
+@import 'sidebar/sidebar.less';
 // endinjector
