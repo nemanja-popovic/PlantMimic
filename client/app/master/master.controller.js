@@ -11,7 +11,7 @@ angular.module('plantMimicApp')
             return window.innerWidth;
         };
         
-        $scope.$watch($scope.getWidth, function (newValue, oldValue) {
+        $scope.$watch($scope.getWidth, function (newValue) {
             if (newValue >= mobileView) {
                 if (angular.isDefined($cookieStore.get('toggle'))) {
                     $scope.toggle = !$cookieStore.get('toggle') ? false : true;

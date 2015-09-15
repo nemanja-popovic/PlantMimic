@@ -102,6 +102,7 @@ angular.module('plantMimicApp')
                 // Update array with any new or deleted items pushed from the socket
                 socket.syncUpdates('point', $scope.schema.points, function (event, point, points) {
                     // This callback is fired after the comments array is updated by the socket listeners
+                    console.log(points);
                     
                     //Update highcharts
                     for (var i = 0; i < window.Highcharts.charts.length; i++) {
