@@ -38,10 +38,14 @@
     <Compile Include="client\app\admin\admin.controller.js" />
     <Compile Include="client\app\admin\admin.js" />
     <Compile Include="client\app\app.js" />
+    <Compile Include="client\app\first-page\first-page.controller.js" />
+    <Compile Include="client\app\first-page\first-page.js" />
     <Compile Include="client\app\main\main-details.controller.js" />
     <Compile Include="client\app\main\main.controller.js" />
     <Compile Include="client\app\main\main.controller.spec.js" />
     <Compile Include="client\app\main\main.js" />
+    <Compile Include="client\app\master\master.controller.js" />
+    <Compile Include="client\app\master\master.controller.spec.js" />
     <Compile Include="client\app\schema\schema-image.directive.js" />
     <Compile Include="client\app\schema\schema-preview.directive.js" />
     <Compile Include="client\app\schema\schema-signals-modal.controller.js" />
@@ -56,6 +60,8 @@
     <Compile Include="client\components\modal\modal.service.js" />
     <Compile Include="client\components\mongoose-error\mongoose-error.directive.js" />
     <Compile Include="client\components\navbar\navbar.controller.js" />
+    <Compile Include="client\components\number-picker\number-picker.directive.js" />
+    <Compile Include="client\components\sidebar\sidebar.controller.js" />
     <Compile Include="client\components\socket\socket.mock.js" />
     <Compile Include="client\components\socket\socket.service.js" />
     <Compile Include="e2e\main\main.po.js" />
@@ -109,6 +115,9 @@
     <Content Include="client\app\admin\admin.html" />
     <Content Include="client\app\admin\admin.less" />
     <Content Include="client\app\app.less" />
+    <Content Include="client\app\first-page\first-page.css" />
+    <Content Include="client\app\first-page\first-page.html" />
+    <Content Include="client\app\first-page\first-page.less" />
     <Content Include="client\app\main\main-details.html" />
     <Content Include="client\app\main\main.css" />
     <Content Include="client\app\main\main.css.map" />
@@ -129,6 +138,11 @@
     <Content Include="client\components\modal\modal.html" />
     <Content Include="client\components\modal\modal.less" />
     <Content Include="client\components\navbar\navbar.html" />
+    <Content Include="client\components\number-picker\number-picker.less" />
+    <Content Include="client\components\sidebar\sidebar.css" />
+    <Content Include="client\components\sidebar\sidebar.css.map" />
+    <Content Include="client\components\sidebar\sidebar.html" />
+    <Content Include="client\components\sidebar\sidebar.less" />
     <Content Include="client\favicon.ico" />
     <Content Include="client\index.html" />
     <Content Include="client\robots.txt" />
@@ -146,7 +160,9 @@
     <Folder Include="client\app\account\settings\" />
     <Folder Include="client\app\account\signup\" />
     <Folder Include="client\app\admin\" />
+    <Folder Include="client\app\first-page\" />
     <Folder Include="client\app\main\" />
+    <Folder Include="client\app\master\" />
     <Folder Include="client\app\schema\" />
     <Folder Include="client\assets\" />
     <Folder Include="client\assets\images\" />
@@ -157,6 +173,8 @@
     <Folder Include="client\components\mongoose-error\" />
     <Folder Include="client\components\navbar\" />
     <Folder Include="client\components\bootstrap\" />
+    <Folder Include="client\components\number-picker\" />
+    <Folder Include="client\components\sidebar\" />
     <Folder Include="client\components\socket\" />
     <Folder Include="e2e\" />
     <Folder Include="e2e\main\" />

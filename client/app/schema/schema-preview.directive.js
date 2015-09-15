@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var addChartWithSignalsData = function addChartWithSignalsData(el, name, series) {
+var addChartWithSignalsData = function addChartWithSignalsData(el, points, series) {
     
     var $newItem = angular.element(el);
     if (!$newItem) {
@@ -10,6 +10,28 @@ var addChartWithSignalsData = function addChartWithSignalsData(el, name, series)
         
         var $element = angular.element(this);
         
+        var plotLines = [];
+        for (var i = 0; i < points.signals.length; i++) {
+            plotLines.push({
+                value: points.signals[i].max,
+                color: 'green',
+                dashStyle: 'shortdash',
+                width: 2,
+                label: {
+                    text: 'Maximum ' + points.signals[i].value
+                }
+            });
+            plotLines.push({
+                value: points.signals[i].min,
+                color: 'red',
+                dashStyle: 'shortdash',
+                width: 2,
+                label: {
+                    text: 'Minimum ' + points.signals[i].value
+                }
+            });
+        }
+        
         $element.highcharts({
             chart: {
                 type: 'spline',
@@ -17,7 +39,7 @@ var addChartWithSignalsData = function addChartWithSignalsData(el, name, series)
                 marginRight: 10
             },
             title: {
-                text: name
+                text: points.name
             },
             xAxis: {
                 type: 'datetime',
@@ -27,11 +49,7 @@ var addChartWithSignalsData = function addChartWithSignalsData(el, name, series)
                 title: {
                     text: 'Value'
                 },
-                plotLines: [{
-                        value: 0,
-                        width: 1,
-                        color: '#808080'
-                    }]
+                plotLines: plotLines,
             },
             tooltip: {
                 formatter: function () {
@@ -99,19 +117,42 @@ angular.module('plantMimicApp')
             schema: '=schema'
         },
         controller: ['$scope', 'socket', function ($scope, socket) {
+                var i = 0;
+                var pointsArray = angular.copy($scope.schema.points);
+                
                 // Update array with any new or deleted items pushed from the socket
-                socket.syncUpdates('point', $scope.schema.points, function (event, point, points) {
+                socket.syncUpdates('point', pointsArray, function (event, point, points) {
                     // This callback is fired after the comments array is updated by the socket listeners
                     console.log(points);
                     
+                    var y = 0;
                     //Update highcharts
-                    for (var i = 0; i < window.Highcharts.charts.length; i++) {
+                    for (i = 0; i < window.Highcharts.charts.length; i++) {
                         var positionOfSignal = getPositionOfSignal(window.Highcharts.charts[i], point.signal);
                         if (positionOfSignal > -1) {
                             
-                            var x = (new Date()).getTime(), // current time
-                                y = point.value;
+                            var x = (new Date()).getTime(); // current time
+                            y = point.value;
                             window.Highcharts.charts[i].series[positionOfSignal].addPoint([x, y], true, true);
+                        }
+                    }
+                    
+                    for (i = 0; i < $scope.schema.points.length; i++) {
+                        
+                        var $statusElement = angular.element('#points-' + $scope.schema.points[i].id);
+                        
+                        for (var j = 0; j < $scope.schema.points[i].signals.length; j++) {
+                            
+                            var $signalElement = $statusElement.find('#point-signal-' + $scope.schema.points[i].signals[j].value);
+                            //Apply class to show if value is inside min,max
+                            if (y > $scope.schema.points[i].signals[j].max || y < $scope.schema.points[i].signals[j].min) {
+                                $signalElement.addClass('status_bad');
+
+                                //Show alert message and etc
+                            }
+                            else {
+                                $signalElement.removeClass('status_bad');
+                            }
                         }
                     }
 
@@ -128,44 +169,47 @@ angular.module('plantMimicApp')
         templateUrl: 'app/schema/schema-preview.html',
         replace: true,
         link: function (scope, element) {
-            
+            var j = 0;
+            var points = [];
+
             var wrapper = element;
             
             for (var i = 0; i < scope.schema.points.length; i++) {
                 
                 var x = scope.schema.points[i].x;
                 var y = scope.schema.points[i].y;
-                var id = 'tooltop-' + i;
+                var id = 'tooltop-' + scope.schema.points[i].id;
                 var content = '<div class="signal">' +
                                     '<div id="' + id + '" class="lineChart chart"></div>' +
                                 '</div>';
+               
+                var pointElements = '';
+                if (scope.schema.points[i].signals.length > 0) {
+                    points = scope.schema.points[i];
+                    for (j = 0; j < points.signals.length; j++) {
+                        pointElements += '<div id="point-signal-' + points.signals[j].value + '" class="point-element status_ok"></div>';
+                    }
+                }
                 
                 // append tooltip
-                wrapper.append('<div style="left:' + x + '%;top:' + y + '%" class="tooltip-down">' +
+                wrapper.append('<div id="points-' + scope.schema.points[i].id + '" style="left:' + x + '%;top:' + y + '%" class="point-elements">' +
+                                             pointElements +
                                             '<div class="tooltip"><div class="close-tooltip">X</div>' + content + '</div>' +
                                     '</div>');
                 if (scope.schema.points[i].signals.length > 0) {
-                    var points = scope.schema.points[i];
+                    points = scope.schema.points[i];
                     //Fire up highcharts
                     var series = [];
-                    for (var j = 0; j < points.signals.length; j++) {
-                        series.push({ name: points.signals[j], data: getRandomData() });
+                    for (j = 0; j < points.signals.length; j++) {
+                        series.push({ name: points.signals[j].value, data: getRandomData() });
                     }
                     
                     var el = element.find('#' + id);
-                    addChartWithSignalsData(el, scope.schema.points[i].name, series);
+                    addChartWithSignalsData(el, points, series);
                 }
             }
             
-            
-            ////Resize all charts
-            //for (i = 0; i < window.Highcharts.charts.length; i++) {
-            //    if (!!window.Highcharts.charts[i]) {
-            //        window.Highcharts.charts[i].reflow();
-            //    }
-            //}
-            
-            wrapper.on('click', '.tooltip-up, .tooltip-down', function () {
+            wrapper.on('click', '.point-elements', function () {
                 angular.element(this).children('.tooltip').fadeIn(100);
             });
             wrapper.on('click', '.close-tooltip', function (e) {

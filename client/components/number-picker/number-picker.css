@@ -1,0 +1,12 @@
+﻿.number-picker {
+  max-width: 50px;
+  background-color: transparent;
+  text-align: center;
+}
+.number-picker a {
+  padding: 0 12px;
+}
+.number-picker .form-group {
+  margin-bottom: 0;
+}
+/*# sourceMappingURL=number-picker.css.map */

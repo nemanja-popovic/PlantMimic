@@ -26,11 +26,9 @@
         width: 36px;
         height: 52px;
     }
-
-    .tooltip-down {
+    /*.tooltip-down {
         background-position: 0 -52px;
-    }
-
+    }*/
     .tooltip {
         display: none;
         width: 325px;
@@ -51,8 +49,7 @@
         background: linear-gradient(top, #fff1d3, #ffdb90);
         opacity: 1;
     }
-
-    .tooltip::after {
+    /*.tooltip::after {
         content: '';
         position: absolute;
         top: -10px;
@@ -73,8 +70,7 @@
         top: auto;
         border-bottom: 0;
         border-top: 10px solid #ffdb90;
-    }
-
+    }*/
     .tooltip h4 {
         font: bold 1.3em 'Trebuchet MS', Tahoma, Arial;
         margin: 0 0 10px;
@@ -105,14 +101,49 @@
         width: @width;
         margin: 0 auto;
     }
+
+    .signals-preview {
+        .min {
+            float: right;
+        }
+
+        .max {
+            float: right;
+            margin-left: 15px;
+        }
+    }
 }
 
 .schema-image {
     width: 100%;
 }
 
-.admin-schema{
+.admin-schema {
     padding: 10px;
     margin-bottom: 5px;
     border-bottom: 1px solid #e7e7e7;
+}
+
+
+.point-elements {
+    width: 20px;
+    position: absolute;
+    border: 1px solid #808080;
+
+    .tooltip {
+        bottom: 12px;
+        top: auto;
+    }
+
+    .point-element {
+        height: 15px;
+        border: 1px solid #e7e7e7;
+        background-color: #32eb2a;
+    }
+    /*.status_ok {
+        background-color: #32eb2a;
+    }*/
+    .status_bad {
+        background-color: #d71d1d;
+    }
 }

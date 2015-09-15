@@ -50,8 +50,8 @@ angular.module('plantMimicApp')
         var height = $img.height();
         // event.offsetX : x = width : 100
         var x = (event.offsetX * 100) / width;
-        var y = (event.offsetY * 100) / height; 
-
+        var y = (event.offsetY * 100) / height;
+        
         //Show modal to add signals to this schema
         var modalInstance = $modal.open({
             animation: $scope.animationsEnabled,
@@ -70,9 +70,18 @@ angular.module('plantMimicApp')
                 'signals': res.signals,
                 'x': x,
                 'y': y,
+                'id': guidGenerator()
             });
         }, function () {
         });
 
     };
+
+    function guidGenerator() {
+        var S4 = function () {
+            return (((1 + Math.random()) * 0x10000) || 0).toString(16).substring(1);
+        };
+        return (S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4());
+    }
+
 });

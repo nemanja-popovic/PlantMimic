@@ -12,10 +12,21 @@
             Node Name required
         </div>
 
+        <div class="form-group">
+            <label>Filter Signals</label>
+            <input type="text" ng-model="signalFilter" class="form-control" placeholder="Filter by Signal name" />
+        </div>
         <ul class="list-group">
-            <li ng-repeat="item in signals" ng-click="toggle(item)"
+            <li ng-repeat="item in signals | filter:{ value: signalFilter }" ng-click="toggle(item)"
                 class="list-group-item" ng-class="{'list-group-item-info':item.selected}">
+
                 <a href="#">{{ item.value }}</a>
+
+                <div class="signal-min-max-values pull-right">
+                    <number-picker class="pull-right" value="item.min" name="'Min'"></number-picker>
+                    <number-picker class="pull-right" value="item.max" name="'Max'"></number-picker>
+                </div>
+                <div class="clearfix"></div>
             </li>
         </ul>
         <div class="alert alert-danger" ng-if="signalsError">
