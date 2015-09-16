@@ -4,50 +4,26 @@
 
 'use strict';
 
-var signals = ['signal1', 'signal2', 'signal3', 'signal4', 'signal5'];
+var Signal = require('./signal.model');
 
 exports.register = function (socket) {
     
-    (function loopNewSignal1() {
-        var rand = Math.round(Math.random() * 15000) + 500;
-        setTimeout(function () {
-            sendNewSignal('signal1');
-            //Call again loop function that creates timer
-            loopNewSignal1();
-        }, rand);
-    }());
-    (function loopNewSignal2() {
-        var rand = Math.round(Math.random() * 15000) + 500;
-        setTimeout(function () {
-            sendNewSignal('signal2');
-            //Call again loop function that creates timer
-            loopNewSignal2();
-        }, rand);
-    }());
-    (function loopNewSignal3() {
-        var rand = Math.round(Math.random() * 15000) + 500;
-        setTimeout(function () {
-            sendNewSignal('signal3');
-            //Call again loop function that creates timer
-            loopNewSignal3();
-        }, rand);
-    }());
-    (function loopNewSignal4() {
-        var rand = Math.round(Math.random() * 15000) + 500;
-        setTimeout(function () {
-            sendNewSignal('signal4');
-            //Call again loop function that creates timer
-            loopNewSignal4();
-        }, rand);
-    }());
-    (function loopNewSignal5() {
-        var rand = Math.round(Math.random() * 15000) + 500;
-        setTimeout(function () {
-            sendNewSignal('signal5');
-            //Call again loop function that creates timer
-            loopNewSignal5();
-        }, rand);
-    }());
+    Signal.find(function (err, signals) {
+        if (err) { return handleError(res, err); }
+        for (var i = 0; i < signals.length; i++) {
+            console.log(signals[i]);
+
+            (function loopNewSignal(value) {
+                var rand = Math.round(Math.random() * 15000) + 500;
+                setTimeout(function () {
+                    console.log(value);
+                    sendNewSignal(value);
+                    //Call again loop function that creates timer
+                    loopNewSignal(value);
+                }, rand);
+            }(signals[i].value));
+        }
+    });
     
     
     //Send new signal value to all users
