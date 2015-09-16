@@ -21,13 +21,11 @@ exports.index = function (req, res) {
 
 // Get a single signal data
 exports.show = function (req, res) {
-    //Schema.findById(req.params.id, function (err, schema) {
-    //    if (err) { return handleError(res, err); }
-    //    if (!schema) { return res.send(404); }
-    //    return res.json(schema);
-    //});
-    var signalData = [];
-    return res.json(signalData);
+    Signal.findById(req.params.id, function (err, signal) {
+        if (err) { return handleError(res, err); }
+        if (!signal) { return res.send(404); }
+        return res.json(signal);
+    });
 };
 
 function handleError(res, err) {

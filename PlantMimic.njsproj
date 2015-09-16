@@ -74,6 +74,7 @@
     <Compile Include="server\api\schema\schema.model.js" />
     <Compile Include="server\api\schema\schema.socket.js" />
     <Compile Include="server\api\signal\index.js" />
+    <Compile Include="server\api\signal\signal.model.js" />
     <Compile Include="server\api\signal\signal.controller.js" />
     <Compile Include="server\api\signal\signal.socket.js" />
     <Compile Include="server\api\user\index.js" />

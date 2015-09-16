@@ -11,25 +11,38 @@ exports.register = function (socket) {
     Signal.find(function (err, signals) {
         if (err) { return handleError(res, err); }
         for (var i = 0; i < signals.length; i++) {
-            console.log(signals[i]);
-
-            (function loopNewSignal(value) {
+            
+            (function loopNewSignal(value, id) {
                 var rand = Math.round(Math.random() * 15000) + 500;
                 setTimeout(function () {
-                    console.log(value);
-                    sendNewSignal(value);
+                    console.log(value, id);
+                    sendNewSignal(value, id);
                     //Call again loop function that creates timer
-                    loopNewSignal(value);
+                    loopNewSignal(value, id);
                 }, rand);
-            }(signals[i].value));
+            }(signals[i].value, signals[i]._id));
         }
     });
     
     
     //Send new signal value to all users
-    function sendNewSignal(signal) {
+    function sendNewSignal(signal, id) {
         var obj = getSignalValues();
         obj.signal = signal;
+        
+        Signal.findById(id, function (err, signal) {
+            if (err) { return handleError(res, err); }
+        
+            signal.values.push(obj.value);
+            if (signal.values.length > 1000) {
+                signal.values.splice(-1000);
+            }
+
+            //Mark modified and save
+            signal.markModified('values');
+            signal.save();
+        });
+        
         socket.emit('signal_point:update', obj);
     }
 
