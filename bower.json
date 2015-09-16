@@ -9,6 +9,7 @@
     "angular-sanitize": ">=1.2.*",
     "angular-socket-io": "~0.6.0",
     "angular-ui-router": "~0.2.10",
+    "AngularJS-Toaster": "angularjs-toaster#~0.4.15",
     "bootstrap": "~3.1.1",
     "es5-shim": "~3.0.1",
     "font-awesome": ">=4.1.0",

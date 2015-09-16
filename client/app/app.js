@@ -4,10 +4,12 @@ angular.module('plantMimicApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
+    'ngAnimate',
     'btford.socket-io',
     'ui.router',
     'ui.bootstrap',
-    'ngFileUpload'
+    'ngFileUpload',
+    'toaster'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

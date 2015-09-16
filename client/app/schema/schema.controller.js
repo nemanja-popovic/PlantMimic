@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 angular.module('plantMimicApp')
-  .controller('SchemaCtrl', function ($scope, Auth, Schema, Upload, schema, signals, $modal, $state) {
+  .controller('SchemaCtrl', function ($scope, Auth, Schema, Upload, schema, signals, $modal, $state, toaster) {
     
     $scope.schema = schema;
     $scope.signals = signals.data || [];
@@ -38,8 +38,13 @@ angular.module('plantMimicApp')
                 Schema.createSchema($scope.schema).$promise.then(function () {
                     //Navigate to all schemas
                     $state.go('schemas');
-                    //$state.go('schema', { id: res._id });
+
+                    //Show notification that schema has been added successfully
+                    toaster.pop('success', 'Schema added!', 'Schema ' + $scope.schema.name + 'successfully added!');
                 });
+            }).error(function (data) {
+                console.log('error status: ' + data);
+                toaster.pop('error', 'Upload failed!', 'Upload of file: ' + file + 'failed. Please try again.');
             });
         }
     };

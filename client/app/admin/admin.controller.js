@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('plantMimicApp')
-  .controller('AdminCtrl', function ($scope, $http, Auth, User, Modal) {
+  .controller('AdminCtrl', function ($scope, $http, Auth, User, Modal, toaster) {
     
     // Use the User $resource to fetch all users
     $scope.users = User.query();
@@ -11,6 +11,9 @@ angular.module('plantMimicApp')
     $scope.delete = function (user) {
         Modal.confirm.delete(function () {
             User.remove({ id: user._id });
+            
+            toaster.pop('success', 'User removed', '');
+
             angular.forEach($scope.users, function (u, i) {
                 if (u === user) {
                     $scope.users.splice(i, 1);

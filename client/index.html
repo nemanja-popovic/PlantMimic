@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.css" />
     <link rel="stylesheet" href="bower_components/rdash-ui/dist/css/rdash.min.css" />
     <!-- endbower -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -34,6 +35,10 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Main Content -->
+
+    <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}">
+    </toaster-container>
+
     <div ui-view></div>
 
     <!--[if lt IE 9]>
@@ -50,6 +55,8 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-socket-io/socket.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/AngularJS-Toaster/toaster.js"></script>
     <script src="bower_components/highcharts-release/highcharts.js"></script>
     <script src="bower_components/highcharts-release/highcharts-more.js"></script>
     <script src="bower_components/highcharts-release/modules/exporting.js"></script>

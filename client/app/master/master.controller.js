@@ -3,9 +3,7 @@
 angular.module('plantMimicApp')
  .controller('MasterCtrl', ['$scope', '$cookieStore', 'Auth', function MasterCtrl($scope, $cookieStore, Auth) {
         
-        
         $scope.isAdmin = Auth.isAdmin;
-        
         
         /**
          * Sidebar Toggle & Cookie Control

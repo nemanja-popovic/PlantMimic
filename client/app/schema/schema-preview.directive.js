@@ -109,6 +109,35 @@ function getRandomData() {
     return data;
 }
 
+function checkSignalMinAndMax(points, toaster, value){
+    
+    for (var i = 0; i < points.length; i++) {
+        
+        var $statusElement = angular.element('#points-' + points[i].id);
+        
+        for (var j = 0; j < points[i].signals.length; j++) {
+            
+            var $signalElement = $statusElement.find('#point-signal-' + points[i].signals[j].value);
+            //Apply class to show if value is inside min,max
+            if (value > points[i].signals[j].max) {
+                $signalElement.addClass('status_bad');
+                
+                //Show alert message and etc
+                toaster.pop('error', 'Signal value too high!', points[i].signals[j].value + ' value: ' + value + ' is bigger than maximum allowed value of ' + points[i].signals[j].max);
+            }
+            else if (value < points[i].signals[j].min) {
+                $signalElement.addClass('status_bad');
+                
+                //Show alert message and etc
+                toaster.pop('error', 'Signal value too low!', points[i].signals[j].value + ' value: ' + value + ' is lower than minimum allowed value of ' + points[i].signals[j].min);
+            }
+            else {
+                $signalElement.removeClass('status_bad');
+            }
+        }
+    }
+}
+
 angular.module('plantMimicApp')
     .directive('schemaPreview', function () {
     return {
@@ -116,14 +145,14 @@ angular.module('plantMimicApp')
         scope: {
             schema: '=schema'
         },
-        controller: ['$scope', 'socket', function ($scope, socket) {
+        controller: ['$scope', 'socket', 'toaster', function ($scope, socket, toaster) {
                 var i = 0;
                 var pointsArray = angular.copy($scope.schema.points);
                 
                 // Update array with any new or deleted items pushed from the socket
-                socket.syncUpdates('point', pointsArray, function (event, point, points) {
+                socket.syncUpdates('point', pointsArray, function (event, point/*, points*/) {
                     // This callback is fired after the comments array is updated by the socket listeners
-                    console.log(points);
+                    console.log(point);
                     
                     var y = 0;
                     //Update highcharts
@@ -134,27 +163,11 @@ angular.module('plantMimicApp')
                             var x = (new Date()).getTime(); // current time
                             y = point.value;
                             window.Highcharts.charts[i].series[positionOfSignal].addPoint([x, y], true, true);
-                        }
-                    }
-                    
-                    for (i = 0; i < $scope.schema.points.length; i++) {
-                        
-                        var $statusElement = angular.element('#points-' + $scope.schema.points[i].id);
-                        
-                        for (var j = 0; j < $scope.schema.points[i].signals.length; j++) {
-                            
-                            var $signalElement = $statusElement.find('#point-signal-' + $scope.schema.points[i].signals[j].value);
-                            //Apply class to show if value is inside min,max
-                            if (y > $scope.schema.points[i].signals[j].max || y < $scope.schema.points[i].signals[j].min) {
-                                $signalElement.addClass('status_bad');
 
-                                //Show alert message and etc
-                            }
-                            else {
-                                $signalElement.removeClass('status_bad');
-                            }
+                            checkSignalMinAndMax($scope.schema.points, toaster, point.value);
                         }
                     }
+                 
 
                 });
                 
@@ -163,7 +176,10 @@ angular.module('plantMimicApp')
                     
                     //Remove highcharts
                     angular.element('.lineChart').remove();
-                    window.Highcharts.charts = [];
+                    
+                    //window.Highcharts.charts = [];
+                    //Leave last 5 elements for now?????
+                    window.Highcharts.charts = window.Highcharts.charts.slice(Math.max(window.Highcharts.charts.length - 5, 1));
                 });
             }],
         templateUrl: 'app/schema/schema-preview.html',
@@ -171,7 +187,7 @@ angular.module('plantMimicApp')
         link: function (scope, element) {
             var j = 0;
             var points = [];
-
+            
             var wrapper = element;
             
             for (var i = 0; i < scope.schema.points.length; i++) {
@@ -182,7 +198,7 @@ angular.module('plantMimicApp')
                 var content = '<div class="signal">' +
                                     '<div id="' + id + '" class="lineChart chart"></div>' +
                                 '</div>';
-               
+                
                 var pointElements = '';
                 if (scope.schema.points[i].signals.length > 0) {
                     points = scope.schema.points[i];
