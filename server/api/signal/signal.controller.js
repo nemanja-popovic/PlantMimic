@@ -13,7 +13,11 @@ var Signal = require('./signal.model');
 
 // Get list of signals
 exports.index = function (req, res) {
-    Signal.find(function (err, signals) {
+    Signal.find({}, {
+        'value': true,
+        'max': true,
+        'min': true
+    }, function (err, signals) {
         if (err) { return handleError(res, err); }
         return res.json(200, signals);
     });

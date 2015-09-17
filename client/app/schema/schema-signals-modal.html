@@ -13,14 +13,22 @@
         </div>
 
         <div class="form-group">
-            <label>Filter Signals</label>
-            <input type="text" ng-model="signalFilter" class="form-control" placeholder="Filter by Signal name" />
+            <label>Find Signals</label>
+            <input type="text" ng-model="searchedSignal"
+                   typeahead="signal as signal.value for signal in signalNames | filter:$viewValue | limitTo:8"
+                   typeahead-editable="false"
+                   typeahead-on-select="onSignalSelect($item, $model, $label)"
+                   class="form-control">
         </div>
-        <ul class="list-group">
-            <li ng-repeat="item in signals | filter:{ value: signalFilter }" ng-click="toggle(item)"
-                class="list-group-item" ng-class="{'list-group-item-info':item.selected}">
 
-                <a href="#">{{ item.value }}</a>
+
+        <ul class="list-group" id="selectedSignals">
+            <li ng-repeat="item in selectedSignals"
+                class="list-group-item">
+
+                <span ng-click="removeSignal(item)" class="remove-signal">X</span>
+
+                <a>{{ item.value }}</a>
 
                 <div class="signal-min-max-values pull-right">
                     <number-picker class="pull-right" value="item.min" name="'Min'"></number-picker>

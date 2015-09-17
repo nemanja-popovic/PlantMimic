@@ -109,7 +109,7 @@ function getRandomData() {
     return data;
 }
 
-function checkSignalMinAndMax(points, toaster, value){
+function checkSignalMinAndMax(points, toaster, value) {
     
     for (var i = 0; i < points.length; i++) {
         
@@ -152,7 +152,7 @@ angular.module('plantMimicApp')
                 // Update array with any new or deleted items pushed from the socket
                 socket.syncUpdates('point', pointsArray, function (event, point/*, points*/) {
                     // This callback is fired after the comments array is updated by the socket listeners
-                    console.log(point);
+                    //console.log(point);
                     
                     var y = 0;
                     //Update highcharts
@@ -163,7 +163,7 @@ angular.module('plantMimicApp')
                             var x = (new Date()).getTime(); // current time
                             y = point.value;
                             window.Highcharts.charts[i].series[positionOfSignal].addPoint([x, y], true, true);
-
+                            
                             checkSignalMinAndMax($scope.schema.points, toaster, point.value);
                         }
                     }
@@ -214,12 +214,13 @@ angular.module('plantMimicApp')
                                     '</div>');
                 if (scope.schema.points[i].signals.length > 0) {
                     points = scope.schema.points[i];
+                    
                     //Fire up highcharts
                     var series = [];
                     for (j = 0; j < points.signals.length; j++) {
                         series.push({ name: points.signals[j].value, data: getRandomData() });
                     }
-                    
+
                     var el = element.find('#' + id);
                     addChartWithSignalsData(el, points, series);
                 }
