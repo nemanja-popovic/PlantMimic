@@ -3,17 +3,12 @@
 <div class="row header" ng-controller="NavbarCtrl">
     <div class="col-xs-12">
         <div class="user pull-right">
-            <div class="item dropdown">
+            <div id="nav-user-profile" class="item dropdown">
                 <a href="#" class="dropdown-toggle">
                     <img src="../assets/images/avatar.jpg" class="avatar-icon" />
+                    <span class="user-name">{{ getCurrentUser().name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li class="link">
-                        <a href="#">
-                            {{ getCurrentUser().name }}
-                        </a>
-                    </li>
-                    <li class="divider"></li>
                     <li class="link" ng-class="{active: isActive('/settings')}">
                         <a href="/settings">
                             Profile
