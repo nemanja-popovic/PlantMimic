@@ -10,6 +10,9 @@ angular.module('plantMimicApp')
         resolve: {
             schemas: ['Schema', function (Schema) {
                     return Schema.getSchemas().$promise;
+                }],
+            projectMetrics: ['MetricSvc', function (MetricSvc) {
+                    return MetricSvc.getMetric().$promise;
                 }]
         },
         authenticate: true

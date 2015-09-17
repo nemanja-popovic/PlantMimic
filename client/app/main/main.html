@@ -7,34 +7,103 @@
     <div id="content-wrapper">
         <div class="page-content">
 
-            <div class="col-xs-12">
-                <div class="row">
+            <div class="row" id="metric">
 
-                    <div ui-view class="col-xs-12">
+                <div ui-view class="col-xs-12">
 
-                        <br />
-                        <header class="hero-unit" id="banner">
-                            <div>
-                                <h1>Plant Mimic</h1>
-                                <p class="lead">View different schemas and signals in them.</p>
-                            </div>
-                        </header>
-                        <div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h1 class="page-header">Schemas:</h1>
-                                    <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6">
-                                        <li ng-repeat="schema in schemas">
-                                            <a ng-if="!!schema._id" ui-sref="main.details({id: schema._id})">{{schema.name}}</a>
-                                        </li>
-                                    </ul>
+                    <div class="row" ng-if="isAdmin()">
+                        <div class="col-lg-3 col-md-6 col-xs-12">
+                            <a ui-sref="admin">
+                                <div class="widget">
+                                    <div class="widget-body widget-color first-widget" ng-class="classes">
+                                        <div class="widget-content">
+                                            <div class="widget-icon pull-left">
+                                                <i class="fa fa-users"></i>
+                                            </div>
+                                            <div class="title">{{projectMetrics.userCount}}</div>
+                                            <div class="comment">Users</div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-xs-12">
+                            <a href="#">
+                                <div class="widget">
+                                    <div class="widget-body widget-color second-widget" ng-class="classes">
+                                        <div class="widget-content">
+                                            <div class="widget-icon pull-left">
+                                                <i class="fa fa-tasks"></i>
+                                            </div>
+                                            <div class="title">{{projectMetrics.signalCount}}</div>
+                                            <div class="comment">Signals</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-xs-12">
+                            <a ui-sref="schemas">
+                                <div class="widget">
+                                    <div class="widget-body widget-color third-widget" ng-class="classes">
+                                        <div class="widget-content">
+                                            <div class="widget-icon pull-left">
+                                                <i class="fa fa-area-chart"></i>
+                                            </div>
+                                            <div class="title">{{projectMetrics.schemaCount}}</div>
+                                            <div class="comment">Schemas</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
 
+                    <div class="row" ng-if="!isAdmin()">
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <a href="#">
+                                <div class="widget">
+                                    <div class="widget-body widget-color first-widget" ng-class="classes">
+                                        <div class="widget-content">
+                                            <div class="widget-icon pull-left">
+                                                <i class="fa fa-tasks"></i>
+                                            </div>
+                                            <div class="title">{{projectMetrics.signalCount}}</div>
+                                            <div class="comment">Signals</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <a ui-sref="schemas">
+                                <div class="widget">
+                                    <div class="widget-body widget-color third-widget" ng-class="classes">
+                                        <div class="widget-content ">
+                                            <div class="widget-icon pull-left">
+                                                <i class="fa fa-area-chart"></i>
+                                            </div>
+                                            <div class="title">{{projectMetrics.schemaCount}}</div>
+                                            <div class="comment">Schemas</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">Schemas:</h1>
+                            <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6">
+                                <li ng-repeat="schema in schemas">
+                                    <a ng-if="!!schema._id" ui-sref="main.details({id: schema._id})">{{schema.name}}</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

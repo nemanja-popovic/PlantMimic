@@ -22,4 +22,31 @@
   margin-top: 70px;
   border-top: 1px solid #E5E5E5;
 }
+#metric .widget {
+  color: white;
+  /*.first-widget {
+        background-color: rgb(45,62,88);
+    }
+
+    .second-widget {
+        background-color: rgb(51,70,99);
+    }
+
+    .third-widget {
+        background-color: rgb(57,79,111);
+    }
+
+    .fourth-widget {
+        background-color: rgb(63,87,122);
+    }*/
+}
+#metric .widget .widget-color {
+  background-color: #334663;
+}
+#metric .widget .widget-icon {
+  background-color: transparent;
+}
+#metric .widget .widget-icon i {
+  font-size: 44px;
+}
 /*# sourceMappingURL=main.css.map */
