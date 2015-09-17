@@ -61,8 +61,12 @@ exports.destroy = function (req, res) {
     Schema.findById(req.params.id, function (err, schema) {
         if (err) { return handleError(res, err); }
         if (!schema) { return res.send(404); }
+        var fileName = folder + schema.imageUrl.substring(schema.imageUrl.indexOf('image/') + 6);
+        
         schema.remove(function (err) {
             if (err) { return handleError(res, err); }
+            fs.unlinkSync(fileName);
+
             return res.send(204);
         });
     });
