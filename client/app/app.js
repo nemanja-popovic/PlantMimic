@@ -9,7 +9,8 @@ angular.module('plantMimicApp', [
     'ui.router',
     'ui.bootstrap',
     'ngFileUpload',
-    'toaster'
+    'toaster',
+    'imageCrop'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

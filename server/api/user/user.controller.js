@@ -79,6 +79,26 @@ exports.changePassword = function (req, res, next) {
     });
 };
 
+
+/**
+ * Update profile
+ */
+exports.updateProfile = function (req, res, next) {
+    var userId = req.user._id;
+    var newName = String(req.body.newName);
+    var newImage = String(req.body.newImage);
+    
+    User.findById(userId, function (err, user) {
+        user.name = newName;
+        user.userImage = newImage;
+        user.save(function (err) {
+            if (err) return validationError(res, err);
+            res.send(200);
+        });
+    });
+};
+
+
 /**
  * Get my info
  */

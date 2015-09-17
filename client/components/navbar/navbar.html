@@ -1,21 +1,27 @@
-
 <!-- Header Bar -->
 <div id="header-bar" class="row header" ng-controller="NavbarCtrl">
     <div class="col-xs-12">
         <div class="user pull-right">
             <div id="nav-user-profile" class="item dropdown">
                 <a href="#" class="dropdown-toggle">
-                    <img src="../assets/images/avatar.jpg" class="avatar-icon" />
+                    <img ng-src="{{getCurrentUser().userImage || '../assets/images/avatar.jpg'}}" class="avatar-icon" />
                     <span class="user-name">{{ getCurrentUser().name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li class="link" ng-class="{active: isActive('/settings')}">
-                        <a href="/settings">
+                    <!--<li class="link" ng-class="{active: isActive('/profile')}">-->
+                    <li class="link">
+                        <a href="/profile">
                             Profile
                         </a>
                     </li>
+                    <!--<li class="link" ng-class="{active: isActive('/settings')}">-->
+                    <li class="link">
+                        <a href="/settings">
+                            Change password
+                        </a>
+                    </li>
                     <li class="divider"></li>
-                    <li class="link" ng-class="{active: isActive('/logout')}">
+                    <li class="link">
                         <a href="#" ng-click="logout()">
                             Logout
                         </a>

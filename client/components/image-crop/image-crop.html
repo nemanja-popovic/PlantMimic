@@ -1,0 +1,22 @@
+﻿<div class="ng-image-crop ng-image-crop--{{ shape }}" ng-style="moduleStyles">
+    <section ng-style="sectionStyles" ng-show="step==1">
+        <span class="btn btn-default btn-file">
+            Choose profile image
+            <input type="file" class="image-crop-filepicker" />
+        </span>
+    </section>
+    <section ng-style="sectionStyles" ng-show="step==2">
+        <canvas class="cropping-canvas" width="{{ canvasWidth }}" height="{{ canvasHeight }}"
+                ng-mousemove="onCanvasMouseMove($event)" ng-mousedown="onCanvasMouseDown($event)"
+                ng-mouseup="onCanvasMouseUp($event)"></canvas>
+        <div ng-style="croppingGuideStyles" class="cropping-guide"></div>
+        <div class="zoom-handle" ng-mousemove="onHandleMouseMove($event)" ng-mousedown="onHandleMouseDown($event)"
+             ng-mouseup="onHandleMouseUp($event)">
+            <span>&larr; zoom &rarr;</span>
+        </div>
+        <!--<span ng-click="crop()">Crop</span>-->
+    </section>
+    <section ng-style="sectionStyles" ng-hide="true" class="section-final">
+        <img class="final-cropped-image" ng-src="{{ croppedDataUri }}" />
+    </section>
+</div>

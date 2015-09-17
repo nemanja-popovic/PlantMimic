@@ -1,1 +1,2 @@
 E:\FAKS\PlantMimic\obj\Debug\PlantMimic.njsprojResolveAssemblyReference.cache
+E:\FAKS\PlantMimic\PlantMimic\obj\Debug\PlantMimic.njsprojResolveAssemblyReference.cache

@@ -92,6 +92,28 @@ angular.module('plantMimicApp')
             }).$promise;
         },
         
+        
+        /**
+       * Update Profile
+       *
+       * @param  {String}   newName
+       * @param  {String}   newImage
+       * @param  {Function} callback    - optional
+       * @return {Promise}
+       */
+      updateProfile: function (newName, newImage, callback) {
+            var cb = callback || angular.noop;
+            
+            return User.updateProfile({ id: currentUser._id }, {
+                newName: newName,
+                newImage: newImage
+            }, function (user) {
+                return cb(user);
+            }, function (err) {
+                return cb(err);
+            }).$promise;
+        },
+        
         /**
        * Gets all available info on authenticated user
        *

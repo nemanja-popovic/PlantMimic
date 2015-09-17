@@ -46,6 +46,8 @@
     <Compile Include="client\app\main\main.js" />
     <Compile Include="client\app\master\master.controller.js" />
     <Compile Include="client\app\master\master.controller.spec.js" />
+    <Compile Include="client\app\metric\metric.REST.js" />
+    <Compile Include="client\app\metric\metric.service.js" />
     <Compile Include="client\app\schema\schema-image.directive.js" />
     <Compile Include="client\app\schema\schema-preview.directive.js" />
     <Compile Include="client\app\schema\schema-signals-modal.controller.js" />
@@ -69,6 +71,8 @@
     <Compile Include="Gruntfile.js" />
     <Compile Include="karma.conf.js" />
     <Compile Include="protractor.conf.js" />
+    <Compile Include="server\api\metric\index.js" />
+    <Compile Include="server\api\metric\metric.controller.js" />
     <Compile Include="server\api\schema\index.js" />
     <Compile Include="server\api\schema\schema.controller.js" />
     <Compile Include="server\api\schema\schema.model.js" />
@@ -173,6 +177,7 @@
     <Folder Include="client\app\first-page\" />
     <Folder Include="client\app\main\" />
     <Folder Include="client\app\master\" />
+    <Folder Include="client\app\metric\" />
     <Folder Include="client\app\schema\" />
     <Folder Include="client\assets\" />
     <Folder Include="client\assets\images\" />
@@ -190,6 +195,7 @@
     <Folder Include="e2e\main\" />
     <Folder Include="server\" />
     <Folder Include="server\api\" />
+    <Folder Include="server\api\metric\" />
     <Folder Include="server\api\schema\" />
     <Folder Include="server\api\signal\" />
     <Folder Include="server\api\user\" />

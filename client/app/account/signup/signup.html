@@ -46,6 +46,15 @@
                         {{ errors.password }}
                     </p>
                 </div>
+                <div class="form-group">
+                    <label>Profile image</label>
+                    <image-crop data-width="300"
+                                data-height="300"
+                                data-shape="circle"
+                                data-step="imageCropStep"
+                                data-result="imageCropResult"
+                                ng-show="showImageCropper"></image-crop>    
+                </div>
                 <div>
                     <button class="btn btn-inverse btn-lg btn-login" type="submit">
                         Sign up
