@@ -3,6 +3,9 @@
 angular.module('plantMimicApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     
+    $scope.unreadNotificationsCount = 0;
+    $scope.notifications = [];
+    
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
@@ -18,5 +21,9 @@ angular.module('plantMimicApp')
     
     $scope.getBreadcrumb = function () {
         return 'PlantMimic' + $location.url();
+    };
+    
+    $scope.openNotificationsDropdown = function () {
+        $scope.unreadNotificationsCount = 0;
     };
 });

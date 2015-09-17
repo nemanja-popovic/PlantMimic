@@ -1,19 +1,34 @@
-﻿#nav-user-profile {
+﻿#header-bar #nav-user-profile {
   width: auto;
   margin-right: 15px;
 }
-#nav-user-profile a:hover {
+#header-bar #nav-user-profile a:hover {
   text-decoration: none;
 }
-#nav-user-profile .user-name {
+#header-bar #nav-user-profile .user-name {
   top: 7px;
   position: relative;
   margin-right: 5px;
   margin-left: 5px;
+  font-size: 14px;
 }
-#nav-user-profile .avatar-icon {
+#header-bar #nav-user-profile .avatar-icon {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+#header-bar .unread-notifications-count {
+  position: absolute;
+  top: 9px;
+  font-size: 10px;
+  background-color: #d71d1d;
+  color: white;
+  border-radius: 50%;
+  min-width: 15px;
+  height: 15px;
+  text-align: center;
+  right: 10px;
 }
 /*# sourceMappingURL=navbar.css.map */

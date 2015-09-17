@@ -1,22 +1,40 @@
-﻿#nav-user-profile {
-    width: auto;
-    margin-right: 15px;
+﻿#header-bar {
+    #nav-user-profile {
+        width: auto;
+        margin-right: 15px;
 
-    a:hover {
-        text-decoration: none;
+        a:hover {
+            text-decoration: none;
+        }
+
+        .user-name {
+            top: 7px;
+            position: relative;
+            margin-right: 5px;
+            margin-left: 5px;
+            font-size: 14px;
+        }
+
+
+        .avatar-icon {
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+        }
     }
 
-    .user-name {
-        top: 7px;
-        position: relative;
-        margin-right: 5px;
-        margin-left: 5px;
-    }
-
-
-    .avatar-icon {
-        -moz-border-radius: 50%;
-        -webkit-border-radius: 50%;
+    .unread-notifications-count {
+        position: absolute;
+        top: 9px;
+        font-size: 10px;
+        background-color: #d71d1d;
+        color: white;
         border-radius: 50%;
+        min-width: 15px;
+        height: 15px;
+        text-align: center;
+        right: 10px;
     }
 }
