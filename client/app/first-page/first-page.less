@@ -1,27 +1,226 @@
-.start-screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 20px;
-    height: 100%;
-    width: 100%;
 
-    img {
+#first-page {
+    /* --------------------------------------
+=========================================
+   2. PRELOADER
+=========================================
+-----------------------------------------*/
+    /*---------------------------------------
+   2.1 LOADING               
+-----------------------------------------*/
+    #loading {
+        background: #2d3e58;
         height: 100%;
-        margin: auto;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        margin-top: 0;
+        top: 0;
     }
 
-    .start-screen-title {
-        font-size: 64px;
-        font-weight: 800;
+    #loading-center {
+        width: 100%;
+        height: 100%;
+        position: relative;
     }
 
-    .start-screen-content {
+    #loading-center-absolute {
         position: absolute;
-        bottom: 50px;
         left: 50%;
-        margin-left: -175px;
-        width: 350px;
+        top: 50%;
+        height: 200px;
+        width: 200px;
+        margin-top: -100px;
+        margin-left: -100px;
+    }
+
+    #object {
+        width: 30px;
+        height: 30px;
+        -webkit-animation: animate 1s infinite ease-in-out;
+        animation: animate 1s infinite ease-in-out;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 60px;
+        background: #17c4bb;
+    }
+    /*---------------------------------------
+   2.2 LOADING ANIMATION               
+-----------------------------------------*/
+    @-webkit-keyframes animate {
+        0% {
+            -webkit-transform: perspective(160px);
+        }
+
+        50% {
+            -webkit-transform: perspective(160px) rotateY(-180deg);
+        }
+
+        100% {
+            -webkit-transform: perspective(160px) rotateY(-180deg) rotateX(-180deg);
+        }
+    }
+
+    @keyframes animate {
+        0% {
+            -moz-transform: perspective(160px) rotateX(0) rotateY(0);
+            -ms-transform: perspective(160px) rotateX(0) rotateY(0);
+            -o-transform: perspective(160px) rotateX(0) rotateY(0);
+            -webkit-transform: perspective(160px) rotateX(0) rotateY(0);
+            transform: perspective(160px) rotateX(0) rotateY(0);
+        }
+
+        50% {
+            -moz-transform: perspective(160px) rotateX(-180deg) rotateY(0);
+            -ms-transform: perspective(160px) rotateX(-180deg) rotateY(0);
+            -o-transform: perspective(160px) rotateX(-180deg) rotateY(0);
+            -webkit-transform: perspective(160px) rotateX(-180deg) rotateY(0);
+            transform: perspective(160px) rotateX(-180deg) rotateY(0);
+        }
+
+        100% {
+            -moz-transform: perspective(160px) rotateX(-180deg) rotateY(-180deg);
+            -ms-transform: perspective(160px) rotateX(-180deg) rotateY(-180deg);
+            -o-transform: perspective(160px) rotateX(-180deg) rotateY(-180deg);
+            -webkit-transform: perspective(160px) rotateX(-180deg) rotateY(-180deg);
+            transform: perspective(160px) rotateX(-180deg) rotateY(-180deg);
+        }
+    }
+    /* --------------------------------------
+=========================================
+   3. SECTIONS-CSS
+=========================================
+-----------------------------------------*/
+    /*---------------------------------------
+   3.1 BASIC STYLE               
+-----------------------------------------*/
+    section {
+        padding: 80px 0;
         text-align: center;
+    }
+
+    .separator {
+        background: #cdcdcd;
+        display: inline-block;
+        height: 1px;
+        margin: 20px 0;
+        width: 100px;
+    }
+    /* --------------------------------------
+=========================================
+   4. HEADER-SECTION
+=========================================
+-----------------------------------------*/
+    /*---------------------------------------
+   4.1 BASIC STYLE               
+-----------------------------------------*/
+    .jumbotron {
+        background: url(../../assets/images/texture.png);
+        min-height: 700px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    /*---------------------------------------
+   4.2 HEADER TOP               
+-----------------------------------------*/
+    ul.social-icons {
+        float: right;
+        padding: 0;
+
+        li {
+            float: left;
+            list-style: none;
+            margin: 0 0 0 10px;
+        }
+
+        img {
+            height: 40px;
+        }
+    }
+    /*---------------------------------------
+   4.3 HEDER MIDDLE               
+-----------------------------------------*/
+    .jumbotron h1 {
+        font-size: 48px; /* PIXEL FALLBACK */
+        font-size: 4.8rem;
+        color: #fff;
+        margin-top: 150px;
+        text-align: center;
+        font-weight: normal;
+    }
+
+    .jumbotron p {
+        font-size: 18px; /* PIXEL FALLBACK */
+        font-size: 1.8rem;
+        color: #fff;
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    .header-btn-holder {
+        width: 100%;
+        float: left;
+        text-align: center;
+    }
+
+    .jumbotron .button {
+        width: 220px;
+        margin: 5px;
+    }
+
+    .signup-button {
+        width: 220px;
+        margin: 5px;
+        background: none;
+        box-shadow: 0 0 0 2px #fff inset;
+    }
+
+    .signup-button:hover {
+        background: none;
+        color: #17c4bb;
+        box-shadow: 0 0 0 2px #17c4bb inset;
+    }
+    /*---------------------------------------
+   4.4 BROWSER SCREEN-SHOT               
+-----------------------------------------*/
+    .browser {
+        float: left;
+        text-align: center;
+        margin: 90px 0 0;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .browser > img {
+        width: 100%;
+        max-width: 942px;
+    }
+
+    .screen-shot {
+        width: 100%;
+        position: absolute;
+        text-align: center;
+        top: 11%;
+    }
+
+    .screen-shot > img {
+        width: 98%;
+        max-width: 913px;
+    }
+    /* --------------------------------------
+=========================================
+   5. FEATURE-SECTION
+=========================================
+-----------------------------------------*/
+    /*---------------------------------------
+   5.1 BASIC STYLE               
+-----------------------------------------*/
+    #feature {
+        background: #fff;
+    }
+
+    .feature-icon {
+        margin-top: 40px;
     }
 }

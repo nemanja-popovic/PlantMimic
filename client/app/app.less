@@ -4,6 +4,9 @@
 @icon-font-path: '/bower_components/bootstrap/fonts/';
 @fa-font-path: '/bower_components/font-awesome/fonts';
 
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,500,100,200,300,600,700,800,900);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,600,700);
+
 /**
  * App-wide Styles
  */
@@ -13,8 +16,17 @@ html {
 }
 
 body {
-    background: #f3f3f3;
-    color: #333 !important;
+    background: #eeeff1;
+    font-size: 16px; /* PIXEL FALLBACK */
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: #8f96a9;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .chart-box {
+    font-family: "Raleway", sans-serif;
+    color: #474c56;
 }
 
 .browsehappy {
@@ -26,6 +38,89 @@ body {
 
 #sidebar-wrapper {
     top: 0;
+}
+
+/*---------------------------------------
+   2 GENERAL CSS               
+-----------------------------------------*/
+
+.button {
+    border-radius: 10px;
+    border-style: none;
+    color: #fff;
+    display: inline-block;
+    line-height: 54px;
+    text-align: center;
+    background: #17c4bb;
+    padding: 0 20px;
+}
+
+.button:hover {
+    background: #18cfc5;
+}
+
+iframe {
+    border: none;
+}
+
+.logo {
+    margin: 0;
+    float: left;
+
+    a:hover {
+        text-decoration: none !important;
+    }
+
+    span {
+        text-decoration: none;
+        color: #17c4bb;
+        font-weight: bold;
+        top: 3px;
+        position: relative;
+    }
+}
+
+.avatar-icon {
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+
+/*---------------------------------------
+   3 TYPOGRAPHY               
+-----------------------------------------*/
+
+h1 {
+    font-size: 48px; /* PIXEL FALLBACK */
+    font-size: 4.8rem;
+}
+
+h2 {
+    font-size: 36px; /* PIXEL FALLBACK */
+    font-size: 3.6rem;
+    margin-top: 0;
+    color: #474d56;
+    text-align: center;
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 18px; /* PIXEL FALLBACK */
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #666;
+    padding: 10px 0;
+}
+
+h4 {
+    font-size: 26px; /* PIXEL FALLBACK */
+    font-size: 2.6rem;
+}
+
+p {
+    font-size: 14px; /* PIXEL FALLBACK */
+    font-size: 1.4rem;
 }
 
 // injector

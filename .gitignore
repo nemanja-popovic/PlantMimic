@@ -9,3 +9,5 @@ dist
 server/uploads/
 PlantMimic/obj
 obj/Debug
+PlantMimic/server/uploads
+PlantMimic/server/temp

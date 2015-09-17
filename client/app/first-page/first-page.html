@@ -1,21 +1,89 @@
 
-<div class="start-screen">
+<div pre-loader id="first-page">
 
-    <img src="../../assets/images/factory_illustration.jpg" class="img img-responsive" />
-
-    <div class="start-screen-content">
-        <h1 class="start-screen-title">
-            Plant Mimic
-        </h1>
-        <div>
-            <a class="btn btn-default btn-lg btn-login" href="/login">
-                Login
-            </a>
-            <a class="btn btn-default btn-lg btn-register" href="/signup">
-                Register
-            </a>
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div id="object"></div>
+            </div>
         </div>
     </div>
 
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="logo">
+                        <a href="#">
+                            <img alt="logo" src="../../assets/images/cloud-logo.png" />
+                            <span>PlantMimic</span>
+                        </a>
+                    </div>
+                    <ul class="social-icons">
+                        <li>
+                            <a href="https://github.com/nemanja23031991/PlantMimic">
+                                <img src="../../assets/images/github-icon.png" alt="GitHub">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-12">
+                    <h1><strong>Plant Mimic</strong></h1>
+                    <p>Tracking plant signals made simple.</p>
+                    <div class="header-btn-holder">
+                        <a class="button" href="/login">LOG IN</a>
+                        <a class="button signup-button" href="/signup">SIGN UP</a>
+                    </div>
+                    <div class="browser">
+                        <img src="../../assets/images/browser.png" alt="">
+                        <div class="screen-shot"><img src="../../assets/images/screenshot.png" alt=""></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <section id="feature">
+        <div class="container">
+            <div class="row">
+                <h2>How does the PlantMimic work</h2>
+                <div class="separator"></div>
+                <p>
+                    PlantMimic platform is cloud solution that helps your organization with many important processes.
+                    It helps you to
+                </p>
+
+                <div class="col-sm-4">
+                    <div class="feature-icon"><img src="../../assets/images/icon-create.png" alt=""></div>
+                    <h3>Define schemas</h3>
+                    <p>
+                        Now it is easier than ever to upload your plant schema and start using all platform features.
+                        You can easily add, edit, delete and search over all your plant schemas.
+                    </p>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="feature-icon"><img src="../../assets/images/icon-track-chart.png" alt=""></div>
+                    <h3>Track processes and signals</h3>
+                    <p>
+                        With just a few simple clicks you can start tracking signals in all parts of your plant schema.
+                        You can also specify minimal and maximal accepted value for every signal.
+                    </p>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="feature-icon"><img src="../../assets/images/icon-megaphone.png" alt=""></div>
+                    <h3>Have realtime alerts</h3>
+                    <p>
+                        If signal is not within allowed and defined values you get notified immediately.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
 </div>
