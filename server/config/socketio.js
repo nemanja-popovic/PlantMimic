@@ -5,6 +5,7 @@
 'use strict';
 
 var config = require('./environment');
+var Redis = require('../components/redis/redis');
 
 // When the user disconnects.. perform this
 function onDisconnect(socket) {
@@ -37,6 +38,14 @@ module.exports = function (socketio) {
     //   secret: config.secrets.session,
     //   handshake: true
     // }));
+    
+    var client = Redis().getClient();
+    client.on('message', function (channel, message) {
+        if ((channel == 'signal:new_val')) {
+            console.log('SUBSCR:', message);
+            socketio.sockets.emit('signal_point:update', JSON.parse(message));
+        }
+    });
 
     socketio.on('connection', function (socket) {
         socket.address = socket.handshake.address !== null ?
