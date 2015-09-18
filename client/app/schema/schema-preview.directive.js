@@ -227,7 +227,21 @@ angular.module('plantMimicApp')
             }
             
             wrapper.on('click', '.point-elements', function () {
-                angular.element(this).children('.tooltip').fadeIn(100);
+                angular.element(this).children('.tooltip').fadeIn({
+                    start: function (){
+                        var tooltip = angular.element(this);
+                        var position = tooltip.parent().offset();
+                        
+                        if (position.top < 300) {
+                            tooltip.css('top', position.top - 300);
+                        }
+                        if ((angular.element('body').width() - position.left) < 300) {
+                            tooltip.css('right', 0);
+                            tooltip.css('left', 'auto');
+                        }
+                    },
+                    duration: 100
+                });
             });
             wrapper.on('click', '.close-tooltip', function (e) {
                 e.stopPropagation();

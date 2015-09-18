@@ -33,6 +33,7 @@
     <Compile Include="app.js" />
     <Compile Include="client\app\account\account.js" />
     <Compile Include="client\app\account\login\login.controller.js" />
+    <Compile Include="client\app\account\profile\profile.controller.js" />
     <Compile Include="client\app\account\settings\settings.controller.js" />
     <Compile Include="client\app\account\signup\signup.controller.js" />
     <Compile Include="client\app\admin\admin.controller.js" />
@@ -59,6 +60,7 @@
     <Compile Include="client\components\auth\auth.service.js" />
     <Compile Include="client\components\auth\user.service.js" />
     <Compile Include="client\components\highcharts\highcharts-config.js" />
+    <Compile Include="client\components\image-crop\image-crop.directive.js" />
     <Compile Include="client\components\modal\modal.service.js" />
     <Compile Include="client\components\mongoose-error\mongoose-error.directive.js" />
     <Compile Include="client\components\navbar\navbar.controller.js" />
@@ -115,6 +117,7 @@
     <Content Include="client\.jshintrc" />
     <Content Include="client\app\account\login\login.html" />
     <Content Include="client\app\account\login\login.less" />
+    <Content Include="client\app\account\profile\profile.html" />
     <Content Include="client\app\account\settings\settings.html" />
     <Content Include="client\app\account\signup\signup.html" />
     <Content Include="client\app\admin\admin.html" />
@@ -148,6 +151,8 @@
     <Content Include="client\assets\images\screenshot.png" />
     <Content Include="client\assets\images\texture.png" />
     <Content Include="client\components\bootstrap\bootstrap-superhero.min.css" />
+    <Content Include="client\components\image-crop\image-crop.html" />
+    <Content Include="client\components\image-crop\image-crop.less" />
     <Content Include="client\components\modal\modal.html" />
     <Content Include="client\components\modal\modal.less" />
     <Content Include="client\components\navbar\navbar.html" />
@@ -171,6 +176,7 @@
     <Folder Include="client\app\" />
     <Folder Include="client\app\account\" />
     <Folder Include="client\app\account\login\" />
+    <Folder Include="client\app\account\profile\" />
     <Folder Include="client\app\account\settings\" />
     <Folder Include="client\app\account\signup\" />
     <Folder Include="client\app\admin\" />
@@ -188,6 +194,7 @@
     <Folder Include="client\components\mongoose-error\" />
     <Folder Include="client\components\navbar\" />
     <Folder Include="client\components\bootstrap\" />
+    <Folder Include="client\components\image-crop\" />
     <Folder Include="client\components\number-picker\" />
     <Folder Include="client\components\sidebar\" />
     <Folder Include="client\components\socket\" />
