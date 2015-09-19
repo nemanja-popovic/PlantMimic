@@ -98,6 +98,26 @@ exports.updateProfile = function (req, res, next) {
     });
 };
 
+/**
+ * Change rights
+ */
+exports.changeRights = function (req, res, next) {
+    var userId = req.user._id;
+    
+    User.findById(userId, function (err, user) {
+        if (user.role === 'admin') {
+            user.role = 'user';
+        }
+        else {
+            user.role = 'admin';
+        }
+        user.save(function (err) {
+            if (err) return validationError(res, err);
+            res.send(200);
+        });
+    });
+};
+
 
 /**
  * Get my info
