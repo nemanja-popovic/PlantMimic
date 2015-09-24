@@ -10,25 +10,26 @@ module.exports = function (app) {
     
     client.on('connect', function () {
         console.log('Connected to Redis');
-        
-        Signal.find(function (err, signals) {
-            
-            console.log('FOund signals', signals);
+        setTimeout(function () {
 
-            if (err) { return handleError(res, err); }
-            for (var i = 0; i < signals.length; i++) {
+            Signal.find(function (err, signals) {
+                console.log('FOund signals', signals);
                 
-                (function loopNewSignal(value, id) {
-                    var rand = Math.round(Math.random() * 15000) + 500;
-                    setTimeout(function () {
-                        sendNewSignal(value, id, client);
-                        //Call again loop function that creates timer
-                        loopNewSignal(value, id);
-                    }, rand);
-                }(signals[i].value, signals[i]._id));
-            }
-        });
-    
+                if (err) { return handleError(res, err); }
+                for (var i = 0; i < signals.length; i++) {
+                    
+                    (function loopNewSignal(value, id) {
+                        var rand = Math.round(Math.random() * 15000) + 500;
+                        setTimeout(function () {
+                            sendNewSignal(value, id, client);
+                            //Call again loop function that creates timer
+                            loopNewSignal(value, id);
+                        }, rand);
+                    }(signals[i].value, signals[i]._id));
+                }
+            });
+        }, 3000);
+
     });
 }
 
@@ -38,7 +39,7 @@ function sendNewSignal(signal, id, redisClient) {
     var obj = getSignalValues();
     obj.signal = signal;
     obj.id = id;
-
+    
     console.log('PUBLISH', JSON.stringify(obj));
     
     redisClient.publish('signal:new_val', JSON.stringify(obj));

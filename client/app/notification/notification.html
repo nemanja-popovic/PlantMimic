@@ -23,7 +23,8 @@
                                     <th class="text-center">No.</th>
                                     <th>Title</th>
                                     <th>Message</th>
-                                    <th></th>
+                                    <th>Time</th>
+                                    <!--<th></th>-->
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,11 +32,12 @@
                                     <td class="text-center">{{$index + 1}}.</td>
                                     <td>{{notification.title}}</td>
                                     <td>{{notification.message}}</td>
-                                    <td>
+                                    <td>{{notification.time | date:"dd/MM/yyyy 'at' h:mm:ss"}}</td>
+                                    <!--<td>
                                         <a ng-click="delete(notification)" class="trash">
                                             <span class="glyphicon glyphicon-trash pull-right"></span>
                                         </a>
-                                    </td>
+                                    </td>-->
                                 </tr>
                             </tbody>
                         </table>
