@@ -54,8 +54,8 @@ var addChartWithSignalsData = function addChartWithSignalsData(el, points, serie
             tooltip: {
                 formatter: function () {
                     return '<b>' + this.series.name + '</b><br/>' +
-                        window.Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                        window.Highcharts.numberFormat(this.y, 2);
+                window.Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                window.Highcharts.numberFormat(this.y, 2);
                 }
             },
             legend: {
@@ -220,7 +220,7 @@ angular.module('plantMimicApp')
                     for (j = 0; j < points.signals.length; j++) {
                         series.push({ name: points.signals[j].value, data: getRandomData() });
                     }
-
+                    
                     var el = element.find('#' + id);
                     addChartWithSignalsData(el, points, series);
                 }
@@ -228,7 +228,7 @@ angular.module('plantMimicApp')
             
             wrapper.on('click', '.point-elements', function () {
                 angular.element(this).children('.tooltip').fadeIn({
-                    start: function (){
+                    start: function () {
                         var tooltip = angular.element(this);
                         var position = tooltip.parent().offset();
                         

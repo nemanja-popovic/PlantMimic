@@ -12,6 +12,9 @@ module.exports = function (app) {
         console.log('Connected to Redis');
         
         Signal.find(function (err, signals) {
+            
+            console.log('FOund signals', signals);
+
             if (err) { return handleError(res, err); }
             for (var i = 0; i < signals.length; i++) {
                 
@@ -37,19 +40,21 @@ function sendNewSignal(signal, id, redisClient) {
     
     Signal.findById(id, function (err, signal) {
         if (err) { return handleError(res, err); }
-        
-        signal.values.push(obj.value);
-        if (signal.values.length > 1000) {
-            signal.values.splice(-1000);
+        try {
+            signal.values.push(obj.value);
+            if (signal.values.length > 1000) {
+                signal.values.splice(-1000);
+            }
+            
+            //Mark modified and save
+            signal.markModified('values');
+            signal.save();
         }
-        
-        //Mark modified and save
-        signal.markModified('values');
-        signal.save();
+        catch(e) {}
     });
     
     console.log('PUBLISH', JSON.stringify(obj));
-
+    
     redisClient.publish('signal:new_val', JSON.stringify(obj));
 }
 

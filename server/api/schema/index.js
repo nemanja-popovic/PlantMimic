@@ -14,6 +14,5 @@ router.patch('/:id', auth.hasRole('admin'), controller.update);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
 router.get('/image/:id', controller.getImage);
 router.post('/image', auth.hasRole('admin'), controller.postImage);
-router.get('/signals', auth.isAuthenticated(), controller.getSignals);
 
 module.exports = router;

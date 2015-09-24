@@ -12,32 +12,38 @@ Signal.find({}).remove(function () {
     Signal.create({
         value: 'signal1',
         max: 35, 
-        min: -10
+        min: -10,
+        values: []
     }, 
         {
         value: 'signal2', 
         max: 53, 
-        min: -18
+        min: -18,
+        values: []
     },
     {
         value: 'signal3', 
         max: 15, 
-        min: -1
+        min: -1,
+        values: []
     }, 
     {
         value: 'signal4', 
         max: 230, 
-        min: -100
+        min: -100,
+        values: []
     }, 
     {
         value: 'signal5', 
         max: 45,
-        min: -10
+        min: -10,
+        values: []
     }, 
     {
         value: 'signal6', 
         max: 3,
-        min: 0
+        min: 0,
+        values: []
     });
 });
 

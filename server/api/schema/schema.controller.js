@@ -134,12 +134,6 @@ exports.postImage = function (req, res) {
 };
 
 
-// Get list of signals
-exports.getSignals = function (req, res) {
-    var signals = ['signal1', 'signal2', 'signal3', 'signal4', 'signal5'];
-    return res.json(200, signals);
-};
-
 function ensureExists(path, cb) {
     //var mask = 0744;
     fs.mkdir(path, function (err) {

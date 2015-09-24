@@ -5,6 +5,9 @@ var config = require('../../config/environment');
 var Signal = require('../../api/signal/signal.model');
 
 function createClient() {
+    console.log('redis config:');
+    console.log(config.redisCloud);
+
     var client = redis.createClient(config.redisCloud.port, config.redisCloud.host, { no_ready_check: true });
     client.auth(config.redisCloud.password, function (err) {
         if (err) {
