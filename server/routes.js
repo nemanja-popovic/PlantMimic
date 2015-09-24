@@ -13,6 +13,7 @@ module.exports = function (app) {
     app.use('/api/signal', require('./api/signal'));
     app.use('/api/users', require('./api/user'));
     app.use('/api/metric', require('./api/metric'));
+    app.use('/api/notification', require('./api/notification'));
     
     app.use('/auth', require('./auth'));
     

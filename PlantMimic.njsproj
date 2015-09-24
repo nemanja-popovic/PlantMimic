@@ -49,6 +49,8 @@
     <Compile Include="client\app\master\master.controller.spec.js" />
     <Compile Include="client\app\metric\metric.REST.js" />
     <Compile Include="client\app\metric\metric.service.js" />
+    <Compile Include="client\app\notification\notification.controller.js" />
+    <Compile Include="client\app\notification\notification.js" />
     <Compile Include="client\app\schema\schema-image.directive.js" />
     <Compile Include="client\app\schema\schema-preview.directive.js" />
     <Compile Include="client\app\schema\schema-signals-modal.controller.js" />
@@ -57,6 +59,7 @@
     <Compile Include="client\app\schema\schema.REST.js" />
     <Compile Include="client\app\schema\schema.service.js" />
     <Compile Include="client\app\schema\schemas.controller.js" />
+    <Compile Include="client\components\auth\notification.service.js" />
     <Compile Include="client\components\auth\auth.service.js" />
     <Compile Include="client\components\auth\user.service.js" />
     <Compile Include="client\components\highcharts\highcharts-config.js" />
@@ -75,6 +78,9 @@
     <Compile Include="protractor.conf.js" />
     <Compile Include="server\api\metric\index.js" />
     <Compile Include="server\api\metric\metric.controller.js" />
+    <Compile Include="server\api\notification\index.js" />
+    <Compile Include="server\api\notification\notification.controller.js" />
+    <Compile Include="server\api\notification\notification.model.js" />
     <Compile Include="server\api\schema\index.js" />
     <Compile Include="server\api\schema\schema.controller.js" />
     <Compile Include="server\api\schema\schema.model.js" />
@@ -134,6 +140,8 @@
     <Content Include="client\app\main\main.html" />
     <Content Include="client\app\main\main.less" />
     <Content Include="client\app\main\main.min.css" />
+    <Content Include="client\app\notification\notification.html" />
+    <Content Include="client\app\notification\notification.less" />
     <Content Include="client\app\schema\schema-image.css" />
     <Content Include="client\app\schema\schema-image.css.map" />
     <Content Include="client\app\schema\schema-image.less" />
@@ -186,6 +194,7 @@
     <Folder Include="client\app\main\" />
     <Folder Include="client\app\master\" />
     <Folder Include="client\app\metric\" />
+    <Folder Include="client\app\notification\" />
     <Folder Include="client\app\schema\" />
     <Folder Include="client\assets\" />
     <Folder Include="client\assets\images\" />
@@ -205,6 +214,7 @@
     <Folder Include="server\" />
     <Folder Include="server\api\" />
     <Folder Include="server\api\metric\" />
+    <Folder Include="server\api\notification\" />
     <Folder Include="server\api\schema\" />
     <Folder Include="server\api\signal\" />
     <Folder Include="server\api\user\" />

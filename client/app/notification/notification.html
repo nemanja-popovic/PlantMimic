@@ -1,0 +1,47 @@
+<div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
+
+
+    <div ng-include="'components/navbar/navbar.html'"></div>
+
+    <div ng-include="'components/sidebar/sidebar.html'"></div>
+
+
+    <div class="col-xs-12">
+        <div class="widget">
+            <div class="widget-header ng-binding">
+                <i class="fa fa-bell-o" ng-class="icon"></i> Notifications
+                <div class="pull-right">
+                    <input type="text" placeholder="Search by title" ng-model="sort" class="form-control input-sm ng-scope">
+                </div>
+            </div>
+            <div class="widget-body no-padding" ng-class="classes">
+                <div class="widget-content">
+                    <div class="table-responsive ng-scope">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">No.</th>
+                                    <th>Title</th>
+                                    <th>Message</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="notification in notifications | filter:{ title: sort }">
+                                    <td class="text-center">{{$index + 1}}.</td>
+                                    <td>{{notification.title}}</td>
+                                    <td>{{notification.message}}</td>
+                                    <td>
+                                        <a ng-click="delete(notification)" class="trash">
+                                            <span class="glyphicon glyphicon-trash pull-right"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

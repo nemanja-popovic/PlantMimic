@@ -31,33 +31,20 @@ angular.module('plantMimicApp')
       syncUpdates: function (modelName, array, cb) {
             cb = cb || angular.noop;
             
-            //    /**
-            // * Syncs item creation/updates on 'model:save'
-            // */
-            //socket.on(modelName + ':save', function (item) {
-            //        var oldItem = _.find(array, { _id: item._id });
-            //        var index = array.indexOf(oldItem);
-            //        var event = 'created';
-            
-            //        // replace oldItem if it exists
-            //        // otherwise just add item to the collection
-            //        if (oldItem) {
-            //            array.splice(index, 1, item);
-            //            event = 'updated';
-            //        } else {
-            //            array.push(item);
-            //        }
-            
-            //        cb(event, item, array);
-            //    });
-            
-            
             socket.on('signal_point:update', function (item) {
                 var event = 'update';
                 array.push(item);
                 if (array.length > 10) {
                     array = array.slice(Math.max(array.length - 10, 1));
                 }
+                cb(event, item, array);
+            });
+
+        },
+        syncNotifications: function (modelName, array, cb) {
+            cb = cb || angular.noop;
+            
+            socket.on('signal_point:notification', function (item) {
                 cb(event, item, array);
             });
         },

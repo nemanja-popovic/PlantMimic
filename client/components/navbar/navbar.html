@@ -33,13 +33,18 @@
                     <i class="fa fa-bell-o"></i>
                     <span ng-show="unreadNotificationsCount > 0" class="unread-notifications-count">{{unreadNotificationsCount}}</span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li class="dropdown-header">
-                        Notifications
+                <ul class="dropdown-menu dropdown-menu-right" id="notifications-dropdown">
+                    <li class="dropdown-header notification-item" ng-repeat="notification in unreadNotifications">
+                        <h7 class="title">{{notification.title}}</h7>
+                        <p class="message">{{notification.message}}</p>
+                        <span class="time">{{notification.time | date:"dd/MM/yyyy 'at' h:mm:ss"}}</span>
                     </li>
+                    <!--<li class="dropdown-header" ng-show="unreadNotifications.lenght === 0">
+                        Notifications
+                    </li>-->
                     <li class="divider"></li>
                     <li>
-                        <a href="#">Server Down!</a>
+                        <a href="#" ng-click="seeAllNotifications()">See all</a>
                     </li>
                 </ul>
             </div>

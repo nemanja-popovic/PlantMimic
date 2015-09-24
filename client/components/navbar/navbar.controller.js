@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('plantMimicApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth, socket) {
     
     $scope.unreadNotificationsCount = 0;
-    $scope.notifications = [];
+    $scope.unreadNotifications = [];
     
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
@@ -26,4 +26,17 @@ angular.module('plantMimicApp')
     $scope.openNotificationsDropdown = function () {
         $scope.unreadNotificationsCount = 0;
     };
+    
+    $scope.seeAllNotifications = function () {
+        $location.path('/notifications');
+    };
+
+    socket.syncNotifications('signal_point:notification', $scope.unreadNotifications, function (event, notification) {
+        $scope.unreadNotifications.unshift(notification);
+        $scope.unreadNotificationsCount++;
+        if ($scope.unreadNotifications.length > 10) {
+            $scope.unreadNotifications.pop();
+        }
+        console.log($scope.unreadNotifications);
+    });
 });

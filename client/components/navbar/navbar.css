@@ -31,4 +31,23 @@
   text-align: center;
   right: 10px;
 }
+#header-bar #notifications-dropdown li {
+  width: 300px;
+  text-align: center;
+  position: relative;
+  padding: 5px;
+}
+#header-bar #notifications-dropdown li .title {
+  font-size: 12px;
+  font-weight: bold;
+}
+#header-bar #notifications-dropdown li .message {
+  font-size: 10px;
+}
+#header-bar #notifications-dropdown li .time {
+  position: absolute;
+  bottom: 0;
+  right: 2px;
+  font-size: 9px;
+}
 /*# sourceMappingURL=navbar.css.map */

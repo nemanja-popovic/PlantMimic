@@ -8,6 +8,7 @@ var config = require('./environment');
 var Redis = require('../components/redis/redis');
 var Schema = require('../api/schema/schema.model');
 var Signal = require('../api/signal/signal.model');
+var Notification = require('../api/notification/notification.model');
 
 // When the user disconnects.. perform this
 function onDisconnect(socket) {
@@ -43,7 +44,7 @@ module.exports = function (socketio) {
     
     var client = Redis().getClient();
     client.on('message', function (channel, message) {
-        if ((channel == 'signal:new_val')) {
+        if (channel == 'signal:new_val') {
             console.log('SUBSCRIBER:', message);
             var msgObj = JSON.parse(message);
             
@@ -78,15 +79,49 @@ module.exports = function (socketio) {
                             if (signal.value == msgObj.signal) {
                                 if (msgObj.value > signal.max) {
                                     console.log('BIGGER THAT MAX', msgObj.value, signal.max);
-                                    socketio.sockets.emit('signal_point:value_grater_than_max', { obj: msgObj, signal: signal });
-
+                                    
                                     //Add notification to DB
+                                    Notification.create({
+                                        signalId: signal._id,
+                                        schemaId: schema._id,
+                                        title: 'Signal value too high!',
+                                        message: signal.value + ' value: ' + msgObj.value + ' is bigger than maximum allowed value of ' + signal.max,
+                                        type: 'error',
+                                        time: new Date()
+                                    });
+                                    
+                                    socketio.sockets.emit('signal_point:notification', {
+                                        obj: msgObj, 
+                                        signal: signal, 
+                                        type: 'signal_bigger',
+                                        title: 'Signal value too high!',
+                                        message: signal.value + ' value: ' + msgObj.value + ' is bigger than maximum allowed value of ' + signal.max,
+                                        time: new Date()
+                                    });
+                                    
                                 }
                                 else if (msgObj.value < signal.min) {
                                     console.log('SMALLER THAN MIN', msgObj.value, signal.min);
-                                    socketio.sockets.emit('signal_point:value_smaller_than_min', { obj: msgObj, signal: signal });
-
+                                    
                                     //Add notification to DB
+                                    Notification.create({
+                                        signalId: signal._id,
+                                        schemaId: schema._id,
+                                        title: 'Signal value too low!',
+                                        message: signal.value + ' value: ' + msgObj.value + ' is smaller than minimum allowed value of ' + signal.min,
+                                        type: 'error',
+                                        time: new Date()
+                                    });
+
+                                    socketio.sockets.emit('signal_point:notification', {
+                                        obj: msgObj,
+                                        signal: signal, 
+                                        type: 'signal_smaller',
+                                        title: 'Signal value too low!',
+                                        message: signal.value + ' value: ' + msgObj.value + ' is smaller than minimum allowed value of ' + signal.min,
+                                        time: new Date()
+                                    });
+                                 
                                 }
                             }
                         }
