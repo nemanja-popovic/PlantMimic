@@ -37,22 +37,8 @@ module.exports = function (app) {
 function sendNewSignal(signal, id, redisClient) {
     var obj = getSignalValues();
     obj.signal = signal;
-    
-    Signal.findById(id, function (err, signal) {
-        if (err) { return handleError(res, err); }
-        try {
-            signal.values.push(obj.value);
-            if (signal.values.length > 1000) {
-                signal.values.splice(-1000);
-            }
-            
-            //Mark modified and save
-            signal.markModified('values');
-            signal.save();
-        }
-        catch(e) {}
-    });
-    
+    obj.id = id;
+
     console.log('PUBLISH', JSON.stringify(obj));
     
     redisClient.publish('signal:new_val', JSON.stringify(obj));
