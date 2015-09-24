@@ -71,6 +71,50 @@ angular.module('plantMimicApp')
                         del.apply(event, args);
                     });
                 };
+            },
+            /**
+         * Create a function to open a delete confirmation modal (ex. ng-click='myModalFn(name, arg1, arg2...)')
+         * @param  {Function} del - callback, ran when delete is confirmed
+         * @return {Function}     - the function to open the modal (ex. myModalFn)
+         */
+        confirm: function (del) {
+                del = del || angular.noop;
+                
+                /**
+           * Open a delete confirmation modal
+           * @param  {String} name   - name or info to show on modal
+           * @param  {All}           - any additional args are passed staight to del callback
+           */
+          return function () {
+                    var args = Array.prototype.slice.call(arguments),
+                        message = args.shift(),
+                        deleteModal;
+                    
+                    deleteModal = openModal({
+                        modal: {
+                            dismissable: true,
+                            title: 'Confirm',
+                            html: '<p>' + message + '</p>',
+                            buttons: [{
+                                    classes: 'btn-primary',
+                                    text: 'Ok',
+                                    click: function (e) {
+                                        deleteModal.close(e);
+                                    }
+                                }, {
+                                    classes: 'btn-default',
+                                    text: 'Cancel',
+                                    click: function (e) {
+                                        deleteModal.dismiss(e);
+                                    }
+                                }]
+                        }
+                    }, 'modal');
+                    
+                    deleteModal.result.then(function (event) {
+                        del.apply(event, args);
+                    });
+                };
             }
         }
     };

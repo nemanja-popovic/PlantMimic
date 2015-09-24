@@ -18,6 +18,12 @@ angular.module('plantMimicApp')
                 controller: 'profile'
             }
         },
+        changeRights: {
+            method: 'PUT',
+            params: {
+                controller: 'rights'
+            }
+        },
         get: {
             method: 'GET',
             params: {

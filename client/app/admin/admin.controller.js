@@ -13,7 +13,7 @@ angular.module('plantMimicApp')
             User.remove({ id: user._id });
             
             toaster.pop('success', 'User removed', '');
-
+            
             angular.forEach($scope.users, function (u, i) {
                 if (u === user) {
                     $scope.users.splice(i, 1);
@@ -21,13 +21,16 @@ angular.module('plantMimicApp')
             });
         })(user.name);
     };
-
+    
     $scope.changeRights = function (user) {
-        if (user.role === 'admin') {
-            //Make user normal
-        }
-        else {
-            //Make it admin
-        }
+        var text = 'Are you sure you want to change rights for ' + user.name + '?';
+        Modal.confirm.confirm(function () {
+            console.log(user);
+            User.changeRights({ id: user._id }).$promise.then(function () {
+                
+                toaster.pop('success', 'Change rights', 'Successfully changed rights for ' + user.name);
+            });
+            
+        })(text);
     };
 });
