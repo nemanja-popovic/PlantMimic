@@ -25,9 +25,18 @@ angular.module('plantMimicApp')
     $scope.changeRights = function (user) {
         var text = 'Are you sure you want to change rights for ' + user.name + '?';
         Modal.confirm.confirm(function () {
-            console.log(user);
-            User.changeRights({ id: user._id }).$promise.then(function () {
-                
+            
+            User.changeRights({ id: user._id }, {}).$promise.then(function () {
+                for (var i = 0; i < $scope.users.length; i++) {
+                    if ($scope.users[i]._id === user._id) {
+                        if ($scope.users[i].role === 'admin') {
+                            $scope.users[i].role = 'user';
+                        }
+                        else {
+                            $scope.users[i].role = 'admin';
+                        }
+                    }
+                }
                 toaster.pop('success', 'Change rights', 'Successfully changed rights for ' + user.name);
             });
             

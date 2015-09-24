@@ -102,8 +102,8 @@ exports.updateProfile = function (req, res, next) {
  * Change rights
  */
 exports.changeRights = function (req, res, next) {
-    var userId = req.user._id;
-    
+    var userId = req.params.id;
+
     User.findById(userId, function (err, user) {
         if (user.role === 'admin') {
             user.role = 'user';
