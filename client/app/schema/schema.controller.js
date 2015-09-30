@@ -20,6 +20,19 @@ angular.module('plantMimicApp')
         }
     };
     
+    $scope.updateSchema = function () {
+        //Save schema and open page
+        console.log($scope.schema);
+        debugger;
+        Schema.updateSchema({ id: $scope.schema._id }, $scope.schema).$promise.then(function () {
+            //Navigate to all schemas
+            $state.go('schemas');
+            
+            //Show notification that schema has been added successfully
+            toaster.pop('success', 'Schema updated!', 'Schema ' + $scope.schema.name + 'successfully updated!');
+        });
+    };
+    
     $scope.upload = function (file) {
         if (!file.$error) {
             Upload.upload({
@@ -48,9 +61,8 @@ angular.module('plantMimicApp')
             });
         }
     };
-    $scope.addPointToSchema = function (event) {
-        
-        var $img = angular.element('#schemaImage');
+    $scope.addPointToSchema = function (event, elementId) {
+        var $img = angular.element('#' + elementId);
         var width = $img.width();
         var height = $img.height();
         // event.offsetX : x = width : 100

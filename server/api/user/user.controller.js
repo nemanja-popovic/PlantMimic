@@ -87,10 +87,12 @@ exports.updateProfile = function (req, res, next) {
     var userId = req.user._id;
     var newName = String(req.body.newName);
     var newImage = String(req.body.newImage);
+    var newSendEmail = Boolean(req.body.newSendEmail);
     
     User.findById(userId, function (err, user) {
         user.name = newName;
         user.userImage = newImage;
+        user.sendEmail = newSendEmail;
         user.save(function (err) {
             if (err) return validationError(res, err);
             res.send(200);
@@ -118,6 +120,24 @@ exports.changeRights = function (req, res, next) {
     });
 };
 
+
+/**
+ * Change sendEmail
+ */
+exports.changeSendEmail = function (req, res, next) {
+    var userId = req.params.id;
+    
+    console.log(req.params);
+    
+    User.findById(userId, function (err, user) {
+        user.sendEmail = req.params.sendEmail;
+
+        user.save(function (err) {
+            if (err) return validationError(res, err);
+            res.send(200);
+        });
+    });
+};
 
 /**
  * Get my info

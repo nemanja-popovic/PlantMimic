@@ -24,7 +24,7 @@
 
                 <schema-image file="file" points="schema.points">
 
-                    <img ngf-src="file" ng-click="addPointToSchema($event)" id="schemaImage" class="schema-image"
+                    <img ngf-src="file" ng-click="addPointToSchema($event, 'schemaImage')" id="schemaImage" class="schema-image"
                          ngf-background="file"
                          ngf-no-object-url="true or false">
 
@@ -38,7 +38,14 @@
 
         <div ng-if="!!schema.imageUrl">
             <h4>Edit {{schema.name}}</h4>
-            <img ng-src="{{schema.imageUrl}}" />
+            <schema-image file="file" points="schema.points" ng-click="addPointToSchema($event, 'schemaImageEdit')">
+
+                <img ng-src="{{schema.imageUrl}}" id="schemaImageEdit" class="schema-image" />
+                <div id="pins"></div>
+
+            </schema-image>
+
+            <div class="btn btn-primary" ng-click="updateSchema()">Update Schema</div>
         </div>
 
     </div>

@@ -12,6 +12,10 @@ var UserSchema = new Schema({
         type: String,
         default: 'user'
     },
+    sendEmail: {
+        type: Boolean,
+        default: false
+    },
     userImage: String,
     hashedPassword: String,
     provider: String,

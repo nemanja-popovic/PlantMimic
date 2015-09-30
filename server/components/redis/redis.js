@@ -11,7 +11,8 @@ function createClient() {
     var client = redis.createClient(config.redisCloud.port, config.redisCloud.host, { no_ready_check: true });
     client.auth(config.redisCloud.password, function (err) {
         if (err) {
-            throw err;
+            //throw err;
+            console.log('ERROR CONNECTING TO REDIS!!!');
         }
     });
     return client;

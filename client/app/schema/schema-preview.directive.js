@@ -179,7 +179,7 @@ angular.module('plantMimicApp')
                     
                     //window.Highcharts.charts = [];
                     //Leave last 10 elements for now?????
-                    window.Highcharts.charts = window.Highcharts.charts.slice(Math.max(window.Highcharts.charts.length - 10, 1));
+                    //window.Highcharts.charts = window.Highcharts.charts.slice(Math.max(window.Highcharts.charts.length - 10, 1));
                 });
             }],
         templateUrl: 'app/schema/schema-preview.html',

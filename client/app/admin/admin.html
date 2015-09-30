@@ -23,6 +23,7 @@
                                     <th class="text-center">No.</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Send Email</th>
                                     <th>Admin</th>
                                     <th></th>
                                 </tr>
@@ -32,6 +33,10 @@
                                     <td class="text-center">{{$index + 1}}.</td>
                                     <td>{{user.name}}</td>
                                     <td>{{user.email}}</td>
+                                    <td>
+                                        <span class="fa fa-check" ng-if="user.sendEmail"></span>
+                                        <span class="fa fa-times" ng-if="!user.sendEmail"></span>
+                                    </td>
                                     <td ng-click="changeRights(user)">
                                         <span class="fa fa-check" ng-if="user.role === 'admin'"></span>
                                         <span class="fa fa-times" ng-if="user.role !== 'admin'"></span>

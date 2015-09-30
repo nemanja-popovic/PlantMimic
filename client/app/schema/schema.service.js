@@ -3,19 +3,19 @@
 angular.module('plantMimicApp')
   .factory('Schema', function Schema(SchemaREST, $http) {
     
-    var getSchemas = function getSchema() {
+    var getSchemas = function getSchemas() {
         return SchemaREST.query();
     };
     var getSchema = function getSchema(params) {
         return SchemaREST.get(params);
     };
-    var createSchema = function getSchema(schema) {
+    var createSchema = function createSchema(schema) {
         return SchemaREST.save(schema);
     };
-    var updateSchema = function getSchema(id, schema) {
+    var updateSchema = function updateSchema(id, schema) {
         return SchemaREST.update(id, schema);
     };
-    var deleteSchema = function getSchema(id) {
+    var deleteSchema = function deleteSchema(id) {
         return SchemaREST.remove(id);
     };
     var uploadImage = function uploadImage(img) {

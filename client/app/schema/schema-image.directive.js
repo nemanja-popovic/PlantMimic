@@ -31,7 +31,7 @@ angular.module('plantMimicApp')
                                         '<span class="max">' + points.signals[j].max + '</span>' +
                                         '<span class="min">' + points.signals[j].min + '</span>' +
                                         '</span>' +
-                                    '</li>';
+                                    '</li><div data-i=' + i + ' class="btn btn-danger  pull-right">Delete</div>';
                     }
                     content += '</ul>';
                     
@@ -43,6 +43,7 @@ angular.module('plantMimicApp')
             }, true);
             
             var imgEl = element.find('img');
+            imgEl.addClass('schema-image');
             // set the wrapper width and height to match the img size
             element.css({
                 'width': imgEl.width(),
@@ -56,9 +57,14 @@ angular.module('plantMimicApp')
                 var points = scope.points[i];
                 var signalsLength = points.signals.length;
                 for (var j = 0; j < signalsLength; j++) {
-                    content += '<li class="list-group-item">' + points.signals[j] + '</li>';
+                    content += '<li class="list-group-item signals-preview">' + 
+                                        '<span>' + points.signals[j].value + '</span>' +
+                                        '<span class="max">' + points.signals[j].max + '</span>' +
+                                        '<span class="min">' + points.signals[j].min + '</span>' +
+                                        '</span>' +
+                                   '</li>';
                 }
-                content += '</ul>';
+                content += '</ul><div data-i=' + i + ' class="btn btn-danger pull-right">Delete</div>';
                 
                 // append tooltip
                 wrapper.append('<div style="left:' + x + '%;top:' + y + '%" class="tooltip-down">' +
@@ -66,7 +72,16 @@ angular.module('plantMimicApp')
                                 '</div>');
             }
             
-            wrapper.on('click', '.tooltip-up, .tooltip-down', function () {
+            wrapper.on('click', '.btn-danger', function (e) {
+                e.stopPropagation();
+                var position = angular.element(this).data('i');
+                if (position > -1) {
+                    scope.points[position] = null;
+                    angular.element(this).closest('.tooltip-down').remove();
+                }
+            });
+            wrapper.on('click', '.tooltip-up, .tooltip-down', function (e) {
+                e.stopPropagation();
                 angular.element(this).children('.tooltip').fadeIn(100);
             });
             wrapper.on('click', '.close-tooltip', function (e) {

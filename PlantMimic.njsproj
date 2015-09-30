@@ -102,6 +102,7 @@
     <Compile Include="server\auth\index.js" />
     <Compile Include="server\auth\local\index.js" />
     <Compile Include="server\auth\local\passport.js" />
+    <Compile Include="server\components\email\email.js" />
     <Compile Include="server\components\errors\index.js" />
     <Compile Include="server\components\redis\redis-generator.js" />
     <Compile Include="server\components\redis\redis.js" />
@@ -224,6 +225,7 @@
     <Folder Include="server\auth\local\" />
     <Folder Include="server\components\" />
     <Folder Include="server\components\errors\" />
+    <Folder Include="server\components\email\" />
     <Folder Include="server\components\redis\" />
     <Folder Include="server\config\" />
     <Folder Include="server\config\environment\" />

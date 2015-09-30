@@ -101,11 +101,12 @@ angular.module('plantMimicApp')
        * @param  {Function} callback    - optional
        * @return {Promise}
        */
-      updateProfile: function (newName, newImage, callback) {
+      updateProfile: function (newName, newSendEmail, newImage, callback) {
             var cb = callback || angular.noop;
             
             return User.updateProfile({ id: currentUser._id }, {
                 newName: newName,
+                newSendEmail: newSendEmail,
                 newImage: newImage
             }, function (user) {
                 return cb(user);

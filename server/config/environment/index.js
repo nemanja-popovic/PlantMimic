@@ -40,11 +40,16 @@ var all = {
             }
         }
     },
-    
+
     redisCloud: {
         host: process.env.REDISCLOUD_URL,
         port: process.env.REDISCLOUD_PORT,
         password: process.env.REDISCLOUD_PASSWORD
+    },
+    
+    adminGmail: {
+        email: process.env.ADMIN_GMAIL_EMAIL,
+        password: process.env.ADMIN_GMAIL_PASSWORD
     },
     
     facebook: {

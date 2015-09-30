@@ -17,7 +17,7 @@ angular.module('plantMimicApp')
     $scope.updateProfile = function (form) {
         $scope.submitted = true;
         if (form.$valid) {
-            Auth.updateProfile($scope.user.name, $scope.imageCropResult)
+            Auth.updateProfile($scope.user.name, $scope.user.sendEmail, $scope.imageCropResult)
         .then(function () {
                 $scope.message = 'Profile updated.';
                 toaster.pop('success', '', 'Profile successfully updated.');

@@ -48,19 +48,29 @@ Signal.find({}).remove(function () {
 });
 
 User.find({}).remove(function () {
-    User.create({
-        provider: 'local',
-        name: 'Test User',
-        email: 'test@test.com',
-        password: 'test'
-    }, {
-        provider: 'local',
-        role: 'admin',
-        name: 'Admin',
-        email: 'admin@admin.com',
-        password: 'admin'
-    }, function () {
-        console.log('finished populating users');
-    }
+    User.create(
+        {
+            provider: 'local',
+            name: 'Test',
+            email: 'test@test.com',
+            password: 'test',
+            sendEmail: false
+        }, {
+            provider: 'local',
+            role: 'admin',
+            name: 'Nemanja Popovic',
+            email: 'nemanja23031991@gmail.com',
+            password: 'test',
+            sendEmail: false
+        }, {
+            provider: 'local',
+            role: 'admin',
+            name: 'Admin',
+            email: 'admin@admin.com',
+            password: 'admin',
+            sendEmail: false
+        }, function () {
+            console.log('finished populating users');
+        }
     );
 });
